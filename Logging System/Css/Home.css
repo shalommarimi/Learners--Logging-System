@@ -1,0 +1,38 @@
+﻿body {
+    background-color:#ffffff;
+}
+ul#Primary {
+  margin: 0 auto;
+  text-align:center;
+  padding: 300px;
+ 
+  }
+
+ul#Primary li {
+
+   display:inline;
+   box-shadow:3px;
+        
+         }
+
+ul#Primary li a {
+
+    background-color:#fbfbfb;
+    color:#2b398b;
+    padding: 8px 15px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:3px;
+  
+   
+}
+ul#Primary li a:hover {
+   background-color:#fdbb30;
+   color:#2b398b;
+  
+}
+.Wrapper {
+    margin: 0 auto;
+    width:960px;
+}
+

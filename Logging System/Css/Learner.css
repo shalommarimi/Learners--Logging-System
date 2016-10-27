@@ -1,0 +1,29 @@
+﻿body {
+}
+.Wrapper {
+    margin: 0 auto;
+   
+}
+.container {
+    margin: 0 auto;
+    position:center;
+    padding-top : 50px;
+}
+
+    .container .form-control {
+        /*width: 200px;*/
+    }
+
+    .container h2 {
+        font-size: 17px;
+        color:#fdbb30;
+    }
+    ::-ms-clear {
+  display: none;
+}
+
+.form-control-clear {
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
