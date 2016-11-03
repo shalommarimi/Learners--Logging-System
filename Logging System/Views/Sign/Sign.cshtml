@@ -20,44 +20,48 @@
 <body>
 
     <div class="container">
-       
 
-        <form class="form" method="post" action="">
+        <div class="form-horizontal">
+
+
+            <h2>Send Email:</h2>
 
             <div class="form-group">
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Compose Email</button>
 
-                <div id="demo" class="collapse">
-                    <h2>Send Email:</h2>
-                    <div class="form-group">
-                        <label for="mesage">Email:</label>
-                        <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Enter Email Address" style="width:200px" autofocus>
-                        </div>
-                    <div class="form-group">
-                        <input type="submit" name="btnsubmit" class="btn btn-primary" value="Send" /> 
-                        <div class="form-group">
-                            <label for="comment">Comment:</label>
-                            <textarea class="form-control" rows="5" id="body-message"></textarea>
-                        </div>
-                    </div>
-               </div>
+                <div class="col-xs-2">
+                    <label for="mesage">Email:</label>
+                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Enter Email Address" autofocus>
+
+                </div>
             </div>
-    
-
-          
-            <input type="button" name="submit" class="btn btn-primary" value="Back" onclick="location.href='@Url.Action("Login", "Mentor")'" />
-            <input type="button" name="submit" class="btn btn-primary" value="Register New Learner" onclick="location.href='@Url.Action("Register", "Mentor")'" />
-            <input type="button" name="submit" class="btn btn-primary" value="POE" onclick="location.href='@Url.Action("Index", "Home")'" />
-
-            <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Login", "Mentor")'" />
-
-
-        </form>
 
 
 
+            <div class="form-group">
 
-    </div>
+                <div class="col-xs-4">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" rows="5" id="body-message"></textarea>
+                </div>
+
+
+            </div>
+
+
+            
+
+                <input type="submit" name="btnsubmit" class="btn btn-primary" value="Send" />
+                <input type="button" name="submit" class="btn btn-primary" value="Back" onclick="location.href='@Url.Action("Login", "Mentor")'" />
+                <input type="button" name="submit" class="btn btn-primary" value="Register New Learner" onclick="location.href='@Url.Action("Register", "Mentor")'" />
+                <input type="button" name="submit" class="btn btn-primary" value="POE" onclick="location.href='@Url.Action("Index", "Home")'" />
+
+                <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Login", "Mentor")'" />
+
+
+
+        </div>
+      </div>
+  
 
 </body>
 </html>

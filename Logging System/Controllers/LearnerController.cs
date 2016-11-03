@@ -23,6 +23,7 @@ namespace Logging_System.Controllers
 
         public ActionResult DoLogin(string txtUsername, string txtPassword)
         {
+            string message = "Username or Password is incorrect";
             Dal odal = new Dal();
             LearnerLogin learnerlogin = new LearnerLogin();
 
@@ -33,13 +34,14 @@ namespace Logging_System.Controllers
 
             if (learnerlogin != null)
             {
-                Session["Username"] = learnerlogin.Username;
+                //Session["Username"] = learnerlogin.Username;
                 FormsAuthentication.SetAuthCookie(learnerlogin.Username, false);
-                return RedirectToAction("Complete", "Complete");
+                return RedirectToAction("Learner_Home", "LearnersHome");
 
             }
             else
             {
+                
                 return View("Login");
             }
 
