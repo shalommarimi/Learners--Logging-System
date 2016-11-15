@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@model Logging_System.Models.Email
+
+
+
+<!DOCTYPE html>
+
 <html>
 <head>
     <title>Learners Home</title>
@@ -10,41 +15,111 @@
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Javascript/Upload.js"></script>
 </head>
 <body>
+   
 
     <div class="container">
-        <form class="form-horizontal" method="post" action="">
 
-            <div class="form-group">
-                <h2>Comment | Complaint | Suggestion | Report</h2>
+     
+        <h2>Comment | Complaint | Suggestion | Report</h2>
 
-                <div class="form-group col-xs-2">
-                    <label for="mesage">Email:</label>
-                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Enter Email Address" autofocus>
+
+        <div class="panel-body">
+
+
+            <div style="color:#2b398b;">
+                @if (Session["Username"] != null)
+            {
+                    <text>
+                        Logged in as: @Session["Username"].ToString()
+                    </text>
+                }
+            </div>
+
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary()
+                    <fieldset>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Sendto, new { @class = "control-label col-sm-2" })
+                            <div class="col-xs-3">
+                                @Html.TextBoxFor(model => model.Sendto, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Sendto)
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SentFrom, new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.SentFrom, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SentFrom)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Subject, new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Subject)
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Message, new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-3">
+                                @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Message)
+                            </div>
+                            <input type="submit" name="submit" class="btn btn-primary" value="Send" />
+                        </div>
+
+                    </fieldset>
+                }
+            </div>
+        </div>
+
+            @using (Html.BeginForm("Process", "LearnersHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div style="color:rgba(255, 0, 0, 0.88);">
+
+                    @ViewBag.Error
+                 </div>
+
+
+                    <div class="form-group">
+                        <h2>Upload Proof Of Absence</h2>
+                        <input type="file" id="file" class="btn btn-primary" name="photo" value="Browse File" />
+                        @ViewBag.Error
+
+                        @*<div class="form-group" style="margin:3px">*@
+                        <input type="submit" class="btn btn-primary" name="Upload" value="Upload" style="margin:3px" />
+                        @*</div>*@
+
+
+                    </div>
+                    }
+
+                    <div class="form-group">
+
+
+                        <input type="button" name="submit" class="btn btn-primary" value="Logbook" onclick="location.href='@Url.Action("SignLogBook", "Logbook")'" />
+                        <input type="button" name="submit" class="btn btn-primary" value="Evaluation Form" onclick="location.href='@Url.Action("CompleteMonthlyEvaluationForm", "MonthlyEvaluationForm")'" />
+                        <input type="button" name="submit" class="btn btn-primary" value="Change Password" onclick="location.href='@Url.Action("ChangePassword", "ChangePassword")'" />
+                        <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Login", "Learner")'" />
+                        <input type="button" name="submit" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+
+                    </div>
+
+
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="form-group col-xs-4">
-                    <label for="comment">Message:</label>
-                    <textarea class="form-control" rows="5" id="body-message"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" name="btnsubmit" class="btn btn-primary" value="Send" />
-                <input type="button" name="submit" class="btn btn-primary" value="Logbook" onclick="location.href='@Url.Action("SignLogBook", "Logbook")'" />
-                <input type="button" name="submit" class="btn btn-primary" value="Evaluation Form" onclick="location.href='@Url.Action("CompleteMonthlyEvaluationForm", "MonthlyEvaluationForm")'" />
-                <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Learner", "Login")'" />
-                <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Home", "Index")'" />
-
-            </div>
-        </form>
-
-
-    </div>
-
-
 
 
 

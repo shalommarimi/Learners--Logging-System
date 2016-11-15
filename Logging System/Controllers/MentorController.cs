@@ -6,24 +6,49 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebMatrix.Data;
+using Learn.BL;
+
 
 namespace Logging_System.Controllers
 {
-    
+
     public class MentorController : Controller
     {
         // GET: Mentor
-       
+
         public ActionResult Login()
         {
             return View();
         }
 
+
         public ActionResult Register()
         {
+
+
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Register(Learners _learners)
+        {
+            if (ModelState.IsValid)
+            {
+                Learners _lear = new Learners();
+                string result = _lear.InsertRegDetails(_learners);
+                ViewData["result"] = result;
+                ModelState.Clear();
+                return View();
+            }
+            else
+            {
+                ModelState.AddModelError(string .Empty,"Could Not Register Learner");
+                return View();
+            }
+           
+        }
+      
 
         public ActionResult DoLogin(string txtUsername, string txtPassword)
         {
@@ -55,5 +80,6 @@ namespace Logging_System.Controllers
             return View("Login");
         }
 
+      
     }
 }
