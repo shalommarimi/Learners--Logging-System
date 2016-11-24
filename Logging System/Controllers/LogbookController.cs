@@ -9,6 +9,7 @@ namespace Logging_System.Controllers
     public class LogbookController : Controller
     {
         // GET: Logbook
+        [Authorize]
         public ActionResult SignLogBook()
         {
             return View();

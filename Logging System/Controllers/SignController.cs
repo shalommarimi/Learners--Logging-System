@@ -9,6 +9,7 @@ namespace Logging_System.Controllers
     public class SignController : Controller
     {
         // GET: Sign
+        [Authorize]
         public ActionResult Sign()
         {
             return View();

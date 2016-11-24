@@ -9,6 +9,7 @@ namespace Logging_System.Controllers
     public class EmailController : Controller
     {
         // GET: Email
+        [Authorize]
         public ActionResult Index()
         {
             return View();

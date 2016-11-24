@@ -11,6 +11,7 @@ namespace Logging_System.Controllers
     {
         LearnersBusinessLogic LearnersBL = new LearnersBusinessLogic();
         // GET: Registered
+        [Authorize]
         public ActionResult RegisteredLearners()
         {
             return View();

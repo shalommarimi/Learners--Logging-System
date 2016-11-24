@@ -10,7 +10,7 @@ using Learn.BL;
 
 namespace Logging_System.Controllers
 {
-   
+  
     public class LearnerController : Controller
     {
         //
@@ -27,14 +27,20 @@ namespace Logging_System.Controllers
         //    string message = "Username or Password is incorrect";
             Dal odal = new Dal();
             LearnersDetails learnerlogin = new LearnersDetails();
+           
+            try
+            {
+              learnerlogin = (
+              from frm in odal.learners.ToList()
+              where frm.Username == txtUsername && frm.Password == txtPassword && frm.IsUserActive == true
+              select frm).Single();
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Username or Password is incorrect.";
+                return View("Login");
+            }
 
-
-            learnerlogin = (
-                from frm in odal.learners.ToList()
-                where frm.Username == txtUsername && frm.Password == txtPassword && frm.IsUserActive == true
-                select frm).Single();
-
-          
 
             if (learnerlogin != null)
             {
@@ -52,6 +58,7 @@ namespace Logging_System.Controllers
             }
 
         }
+        [Authorize]
         public ActionResult Logout()
         {
 

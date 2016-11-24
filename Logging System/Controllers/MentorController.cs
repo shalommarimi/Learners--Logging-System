@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.Data;
 using Learn.BL;
-
+using System.Net.Mail;
 
 namespace Logging_System.Controllers
 {
@@ -23,6 +23,7 @@ namespace Logging_System.Controllers
         }
 
 
+        [Authorize]
         public ActionResult Register()
         {
 
@@ -30,6 +31,7 @@ namespace Logging_System.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Register(Learners _learners)
         {
@@ -48,17 +50,30 @@ namespace Logging_System.Controllers
             }
            
         }
-      
 
+
+      
         public ActionResult DoLogin(string txtUsername, string txtPassword)
         {
             Dal dal = new Dal();
             MentorLogin mentorlogin = new MentorLogin();
+            ViewBag.Error = "Username or Password is incorret";
 
-            mentorlogin = (
-                from frm in dal.mentors.ToList()
-                where frm.Username == txtUsername && frm.Password == txtPassword && frm.IsActive == true
-                select frm).Single();
+            try
+            {
+              mentorlogin = (
+              from frm in dal.mentors.ToList()
+              where frm.Username == txtUsername && frm.Password == txtPassword && frm.IsActive == true
+              select frm).Single();
+            }
+            catch (Exception)
+            {
+
+                ViewBag.Error = "Username or Password is incorrect.";
+                return View("Login");
+            }
+
+          
 
             if (mentorlogin != null)
             {
@@ -73,6 +88,7 @@ namespace Logging_System.Controllers
             }
 
         }
+        [Authorize]
         public ActionResult Logout()
         {
 

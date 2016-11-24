@@ -438,6 +438,7 @@
     <Content Include="Content\themes\MyThemes\start\jquery-ui.css" />
     <Content Include="Content\themes\MyThemes\start\jquery-ui.min.css" />
     <Content Include="Content\themes\MyThemes\start\theme.css" />
+    <Content Include="Css\General.css" />
     <Content Include="Css\Home.css" />
     <Content Include="Css\Learner.css" />
     <Content Include="Css\Master.css" />
@@ -518,7 +519,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MasterPage.cshtml" />
@@ -535,17 +538,20 @@
     <Compile Include="Controllers\MentorController.cs" />
     <Compile Include="Controllers\MonthlyEvaluationFormController.cs" />
     <Compile Include="Controllers\RegisteredController.cs" />
+    <Compile Include="Controllers\ResetController.cs" />
     <Compile Include="Controllers\SignController.cs" />
     <Compile Include="EFramework\Dal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewPassword.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\LearnerLogin.cs" />
     <Compile Include="Models\Learners.cs" />
     <Compile Include="Models\MentorLogin.cs" />
     <Compile Include="Models\Mentors.cs" />
+    <Compile Include="Models\Reset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\LearnersModel.cs" />
     <Compile Include="ViewModel\MentorsModel.cs" />
@@ -562,6 +568,9 @@
     <Content Include="Views\Mentor\Register.cshtml" />
     <Content Include="Views\ChangePassword\ChangePassword.cshtml" />
     <Content Include="Views\LearnersHome\Success.cshtml" />
+    <Content Include="Views\LearnersHome\Downloads.cshtml" />
+    <Content Include="Views\ChangePassword\EnterNewPassword.cshtml" />
+    <Content Include="Views\Reset\Reset.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

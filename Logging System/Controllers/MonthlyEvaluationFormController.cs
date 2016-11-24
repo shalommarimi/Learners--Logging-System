@@ -9,6 +9,7 @@ namespace Logging_System.Controllers
     public class MonthlyEvaluationFormController : Controller
     {
         // GET: MonthlyEvaluationForm
+        [Authorize]
         public ActionResult CompleteMonthlyEvaluationForm()
         {
             return View();

@@ -1,0 +1,80 @@
+﻿using Learn.BL;
+using Logging_System.EFramework;
+using Logging_System.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+
+namespace Logging_System.Controllers
+{
+    public class ResetController : Controller
+    {
+        // GET: Reset
+        public ActionResult Reset()
+        {
+            return View();
+        }
+
+        
+        [HttpPost]
+        public ActionResult Reset(Reset _reset)
+        {
+            if (ModelState.IsValid)
+            {
+                Reset pass = new Reset();
+                string result = pass.ResetPassword(_reset);
+                ViewData["result"] = result;
+                ViewBag.Err = "Password reset succesful. You will receive an email with your new Password.";
+                ModelState.Clear();
+               
+                return View();
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Could not reset password");
+                return View();
+            }
+
+        }
+
+        public ActionResult CheckRSAID(string txtUsername, string txtPassword)
+        {
+            Dal dal = new Dal();
+            LearnersDetails change = new LearnersDetails();
+         
+
+            try
+            {
+                change = (
+                from frm in dal.learners.ToList()
+                where frm.RSAID == txtUsername && frm.Email == txtPassword && frm.IsUserActive == true
+                select frm).Single();
+            }
+            catch (Exception)
+            {
+
+                ViewBag.Error = "Learner does not exist. Please verify your Identity Number and Email Address";
+                return View("Reset");
+            }
+
+
+
+            if (change != null)
+            {
+
+                FormsAuthentication.SetAuthCookie(change.Username, false);
+                return RedirectToAction("Reset", "Reset");
+             
+
+            }
+            else
+            {
+                return View("Reset");
+            }
+
+        }
+    }
+}

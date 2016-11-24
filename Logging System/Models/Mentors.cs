@@ -9,6 +9,8 @@ namespace Logging_System.Models
     {
 
         public int MentorID { get; set; }
+
+
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Position { get; set; }

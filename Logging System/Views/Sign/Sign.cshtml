@@ -24,8 +24,9 @@
         <div class="form-horizontal">
 
             <div style="color:#2b398b;">
+
                 @if (Session["Username"] != null)
-            {
+                {
                     <text>
                         Logged in as: @Session["Username"].ToString()
                     </text>
@@ -39,7 +40,7 @@
 
                 <div class="col-xs-2">
                     <label for="mesage">Email:</label>
-                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Enter Email Address" autofocus>
+                    <input type="email" class="form-control" name="txtEmail" id="txtEmail"  placeholder="Enter Email Address" autofocus>
 
                 </div>
             </div>
@@ -64,6 +65,7 @@
                 <input type="button" name="submit" class="btn btn-primary" value="Register New Learner" onclick="location.href='@Url.Action("Register", "Mentor")'" />
                 <input type="button" name="submit" class="btn btn-primary" value="POE" onclick="location.href='@Url.Action("Index", "Home")'" />
             <input type="button" name="submit" class="btn btn-primary" value="Learners Database" onclick="location.href='@Url.Action("RegisteredLearners", "Registered")'" />
+            <input type="button" name="submit" class="btn btn-primary" value="Download POA" onclick="location.href='@Url.Action("Downloads", "LearnersHome")'" />
 
                 <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Login", "Mentor")'" />
 
