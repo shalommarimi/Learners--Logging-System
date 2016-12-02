@@ -46,29 +46,29 @@ namespace Logging_System.Models
 
 
 
-        //SqlConnection con = new SqlConnection("Data Source=DVTLSMASHINI;Initial Catalog=DVTLearnership;User ID=sa;Password=Lulama.01");
-        //SqlCommand cmd = new SqlCommand();
+        SqlConnection con = new SqlConnection("Data Source=DVTLSMASHINI;Initial Catalog=DVTLearnership;User ID=sa;Password=Lulama.01");
+        SqlCommand cmd = new SqlCommand();
 
 
 
-        //public string Update(Password _lean)
-        //{
-        //    cmd.CommandText = "Insert into [Learners_Information] values('" + _lean.NewPassword + "')";
+        public string Update(Password _lean)
+        {
+            cmd.CommandText = "Insert into [Learners_Information] values('" + _lean.NewPassword + "')";
 
 
-        //    cmd.Connection = con;
-        //    try
-        //    {
-        //        con.Open();
-        //        cmd.ExecuteNonQuery();
-        //        con.Close();
-        //        return "Successfully Registered ";
-        //    }
-        //    catch (Exception es)
-        //    {
-        //        throw es;
-        //    }
-        //}
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return "Successfully Registered ";
+            }
+            catch (Exception es)
+            {
+                throw es;
+            }
+            }
 
-    }
+        }
     }

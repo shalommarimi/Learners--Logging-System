@@ -12,7 +12,7 @@ namespace Logging_System.EFramework
     {
         public DbSet<LearnersDetails> learners { get; set; }
         public DbSet<MentorLogin> mentors { get; set; }
-        //public DbSet<Password> pass { get; set; }
+        public DbSet<Administrator> admin { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,8 +24,8 @@ namespace Logging_System.EFramework
                 modelBuilder.Entity<MentorLogin>().ToTable("MentorsCredentials");
                 modelBuilder.Entity <MentorLogin > ().HasKey(x => x.MentorID);
 
-                //modelBuilder.Entity<Password>().ToTable("Learners_Information");
-                //modelBuilder.Entity<Password>().HasKey(x => x.LearnerID);
+                modelBuilder.Entity<Administrator>().ToTable("Administrator");
+                modelBuilder.Entity<Administrator>().HasKey(x => x.AdminID);
         }
         }
     }

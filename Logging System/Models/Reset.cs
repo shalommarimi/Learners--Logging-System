@@ -103,7 +103,7 @@ namespace Logging_System.Models
             //mail.To.Add(_lean.Email);
             //mail.From = new MailAddress("learnerslogsystem@gmail.com");
             //mail.Subject = ("Password Reset Confirmation");
-            //string Body = ("Hi Log System User ,                                                                                                    Your Login Password has been reset to "  + randomPassword + " .Please NOTE that you are permitted to change your Password to what suits you. For any queries please send an email to mhuna@jhb.dvt.co.za or pmabitsela@jhb.dvt.co.za");
+            //string Body = ("Hi Log System User ,                                                                                                    Your Login Password has been reset to " + randomPassword + " .Please NOTE that you are permitted to change your Password to what suits you. For any queries please send an email to mhuna@jhb.dvt.co.za or pmabitsela@jhb.dvt.co.za");
             //mail.Body = Body;
             //mail.IsBodyHtml = true;
             //SmtpClient smtp = new SmtpClient();

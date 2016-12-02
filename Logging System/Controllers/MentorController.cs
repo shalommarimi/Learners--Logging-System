@@ -27,8 +27,7 @@ namespace Logging_System.Controllers
         public ActionResult Register()
         {
 
-
-            return View();
+           return View();
         }
 
         [Authorize]
@@ -77,7 +76,10 @@ namespace Logging_System.Controllers
 
             if (mentorlogin != null)
             {
-                Session["Username"] = mentorlogin.Username;
+                Session["FirstName"] = mentorlogin.FirstName.ToString();
+                Session["Surname"] = mentorlogin.Surname.ToString();
+                //Session["Role"] = mentorlogin.Role.ToString();
+
                 FormsAuthentication.SetAuthCookie(mentorlogin.Username, false);
                 return RedirectToAction("Sign", "Sign");
 

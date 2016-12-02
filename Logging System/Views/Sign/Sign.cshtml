@@ -22,18 +22,22 @@
     <div class="container">
 
         <div class="form-horizontal">
+            <br />
 
-            <div style="color:#2b398b;">
+            <div class="logged">
 
-                @if (Session["Username"] != null)
+                @if (Session["FirstName"] != null || Session["Surname"] != null)
                 {
                     <text>
-                        Logged in as: @Session["Username"].ToString()
+                        Mentor: @Session["FirstName"].ToString()  @Session["Surname"].ToString()
                     </text>
+                    @*<text>
+                        Role: @Session["Role"].ToString()
+                    </text>*@
                 }
             </div>
-
-
+           
+            
             <h2>Send Email:</h2>
 
             <div class="form-group">

@@ -46,7 +46,9 @@ namespace Logging_System.Controllers
             {
 
 
+                Session["Names"] = learnerlogin.Names;
                 Session["Username"] = learnerlogin.Username;
+                Session["Surname"] = learnerlogin.Surname;
                 FormsAuthentication.SetAuthCookie(learnerlogin.Username, false);
                 return RedirectToAction("Learner_Home", "LearnersHome");
 

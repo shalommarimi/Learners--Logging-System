@@ -131,7 +131,7 @@ namespace Logging_System.Models
 
             Random r = new Random();
             string randomPassword;
-            randomPassword = ((alphas[r.Next(0, 52)] + r.Next(0, 100) + alphas[r.Next(0, 52)] + r.Next(0, 100) + alphas[r.Next(0, 52)] + r.Next(0, 100) + alphas[r.Next(0, 52)]));
+            randomPassword = ((alphas[r.Next(0,52)] + r.Next(0,100) + alphas[r.Next(0,52)] + r.Next(0,100) + alphas[r.Next(0,52)] + r.Next(0,100) + alphas[r.Next(0,52)]));
 
             cmd.CommandText = "Insert into [Learners_Information] values('" + _lean.Names 
                 + "','" + _lean.Surname 
@@ -161,9 +161,9 @@ namespace Logging_System.Models
             //smtp.EnableSsl = true;
             //smtp.Send(mail);
 
-            //cmd.Connection = con;
+            cmd.Connection = con;
 
-          
+
 
             try
             {

@@ -27,3 +27,30 @@
   pointer-events: auto;
   cursor: pointer;
 }
+.logged {
+    color:#2b398b;
+    font-weight:bold;
+
+}
+.form-group h2 {
+    font-weight:bold;
+}
+h2 {
+     color:#2b398b;
+    font-weight:bold;
+}
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+form-group btns {
+    margin:3px;
+}

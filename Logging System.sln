@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging System", "Logging S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learns.BL", "Learns.BL\Learns.BL.csproj", "{55EF2747-08DC-46DD-B257-8D4FDE461A29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentors.BL", "Mentors.BL\Mentors.BL.csproj", "{316E7DC3-8310-4AD9-BC18-F801C178B772}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{55EF2747-08DC-46DD-B257-8D4FDE461A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55EF2747-08DC-46DD-B257-8D4FDE461A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55EF2747-08DC-46DD-B257-8D4FDE461A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316E7DC3-8310-4AD9-BC18-F801C178B772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316E7DC3-8310-4AD9-BC18-F801C178B772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316E7DC3-8310-4AD9-BC18-F801C178B772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316E7DC3-8310-4AD9-BC18-F801C178B772}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,38 +1,50 @@
 ﻿body {
-    background-color:#ffffff;
+    background-color: #ffffff;
+    /*background-image: url(../Images/Lab_2.jpg);*/
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url('../Images/vlcsnap-error290.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
 }
+
 ul#Primary {
-  margin: 0 auto;
-  text-align:center;
-  padding: 300px;
- 
-  }
+    margin: 0 auto;
+    text-align: center;
+    padding: 350px;
+}
 
-ul#Primary li {
-
-   display:inline;
-   box-shadow:3px;
-        
-         }
+    ul#Primary li {
+        display: inline;
+        box-shadow: 3px;
+ }
 
 ul#Primary li a {
+            /*background-color: #fbfbfb;*/
+            background-color: #fdbb30;
+            color: #2b398b;
+            padding: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+}
 
-    background-color:#fbfbfb;
-    color:#2b398b;
-    padding: 8px 15px;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:3px;
-  
-   
-}
-ul#Primary li a:hover {
-   background-color:#fdbb30;
-   color:#2b398b;
-  
-}
+            ul#Primary li a:hover {
+                /*background-color: #fdbb30;*/
+                color: #2b398b;
+                background-color: #fbfbfb;
+            }
+
 .Wrapper {
     margin: 0 auto;
-    width:960px;
+    /*width: 960px;*/
 }
 
+    .Wrapper h1 {
+        color: #f39c12;
+        text-align: center;
+        padding: 300px;
+    }
+
+body, html {
+    min-height: 100%;
+}
