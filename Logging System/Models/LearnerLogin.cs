@@ -11,6 +11,7 @@ namespace Logging_System.Models
         public int UserID { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Username { get; set; }
 
 

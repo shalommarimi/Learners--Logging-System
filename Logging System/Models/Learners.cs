@@ -14,9 +14,13 @@ namespace Logging_System.Models
        
 
         [Required]
+        [MaxLength(50)]
+        [RegularExpression("^[a-zA-Z][a-zA-Z\\s]+$", ErrorMessage = "Names cannot contain numeric values")]
         public string Names { get; set; }
 
         [Required]
+        [MaxLength(50)]
+        [RegularExpression("^[a-zA-Z][a-zA-Z\\s]+$", ErrorMessage = "Surname cannot contain numeric values")]
         public string Surname { get; set; }
 
         [Required]
@@ -49,6 +53,7 @@ namespace Logging_System.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Username field required")]
+        [EmailAddress]
         public string Username { get; set; }
 
        

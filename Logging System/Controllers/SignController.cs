@@ -13,6 +13,6 @@ namespace Logging_System.Controllers
         public ActionResult Sign()
         {
             return View();
-        }
+                    }
     }
 }

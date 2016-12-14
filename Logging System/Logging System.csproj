@@ -453,6 +453,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\BBD-Custom-Login.png" />
     <Content Include="Images\Dynamic.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\Lab_2.jpg" />

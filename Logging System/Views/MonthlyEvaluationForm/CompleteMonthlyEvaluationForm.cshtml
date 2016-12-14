@@ -17,14 +17,6 @@
 <body>
     <div class="form-group">
 
-        <div style="color:#2b398b;">
-            @if (Session["Username"] != null)
-            {
-                <text>
-                    Logged in as: @Session["Username"].ToString()
-                </text>
-            }
-        </div>
 
 
 
@@ -39,9 +31,20 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <div class="form-group">
+                                                    <br />
+
+                                                    <div class="logged">
+                                                        @if (Session["Names"] != null || Session["Surname"] != null)
+            {
+                                                            <text>
+                                                                Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
+                                                            </text>
+                                                        }
+                                                        <br /><br />
+                                                    </div>
 
                                                     <h2>Monthly Evaluation Form</h2>
-
+                                                    <br />
                                                     <div class="form-group">
                                                         <label class="control-label col-sm-2"> Mentor's Name:</label>
                                                         <select class="form-control" id="sel1" style="width:190px">
@@ -66,7 +69,7 @@
 
                                                     <div class="form-group">
                                                         <label class="control-label col-sm-2" name="txtName">Learner Name:</label>
-                                                        <input type="tel" class="form-control" name="txtLearner" id="txtLearner" value="" style="width:190px">
+                                                        <input type="tel" class="form-control"  name="txtLearner" id="txtLearner" style="width:190px" value="@Session["Names"].ToString()  @Session["Surname"].ToString()"/>  
                                                     </div>
 
 

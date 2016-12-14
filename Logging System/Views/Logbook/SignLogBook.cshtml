@@ -18,27 +18,23 @@
 
   
     <div class="container">
+        <br />
+        <br />
+
         <div class="form-group">
 
-            <div style="color:#2b398b;">
-                @if (Session["Username"] != null)
-            {
-                    <text>
-                        Logged in as: @Session["Username"].ToString()
-                    </text>
-                }
-            </div>
-         
-            <div>
-                &nbsp;&nbsp;&nbsp;
-               
+             <br />
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" name="tel">Learner's Name:</label>
+                <input type="tel" class="form-control" name="txtTel" id="txtTel" value="@Session["Names"].ToString()  @Session["Surname"].ToString()" style="width:190px">
             </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2"> Mentor's Name:</label>
                     <select class="form-control" id="sel1" style="width:190px">
 
-                        <option>Prudence Mabitsela</option>
                         <option>Prudence Mabitsela & Mthunzi Huna</option>
+                        <option>Prudence Mabitsela</option>
                         <option>Mthunzi Huna</option>
                         <option>Paul Cloete</option>
                         <option>Warren Groenewald</option>
@@ -50,6 +46,7 @@
                     <label class="control-label col-sm-2" name="tel">Telephone:</label>
                     <input type="tel" class="form-control" name="txtTel" id="txtTel" value="+27 (11) 759 5930" style="width:190px">
                 </div>
+
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" name="company">Company Name:</label>
@@ -293,6 +290,7 @@
 
 
         </div>
+    </div>
 
 
 </body>

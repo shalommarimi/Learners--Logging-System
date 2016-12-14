@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 
 namespace Logging_System.Models
@@ -12,14 +13,19 @@ namespace Logging_System.Models
 
 
         [Required]
+        [MaxLength(50)]
+        [RegularExpression("^[a-zA-Z][a-zA-Z\\s]+$", ErrorMessage = "First Name cannot contain numeric values")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
-
+        [MaxLength(50)]
+        [RegularExpression("^[a-zA-Z][a-zA-Z\\s]+$", ErrorMessage = "Middle Name cannot contain numeric values")]
         [Display(Name = "Middle Name")]
-        [Required]
+        [Required(ErrorMessage ="Middle Name field is required")]
         public string MiddleName { get; set; }
 
         [Required]
+        [MaxLength(50)]
+        [RegularExpression("^[a-zA-Z][a-zA-Z\\s]+$", ErrorMessage = "Surname or Last Name cannot contain numeric values")]
         public string Surname { get; set; }
 
         [Required]
@@ -29,6 +35,7 @@ namespace Logging_System.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        //[RegularExpression("")]
         public DateTime? DOB { get; set; }
 
         [Required]
@@ -52,6 +59,7 @@ namespace Logging_System.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Username field required")]
+        [EmailAddress]
         public string Username { get; set; }
 
 
@@ -145,7 +153,7 @@ namespace Logging_System.Models
             //mail.To.Add(_lean.Email);
             //mail.From = new MailAddress("learnerslogsystem@gmail.com");
             //mail.Subject = ("Learner's Login Details");
-            //string Body = ("Hi " + _lean.Names + " " + _lean.Surname + " ,                                                                                                   this is to confirm that you have been registered on the Learners Log System. Your login details for the Log System are " + "Username: " + _lean.Username + "  Password: " + randomPassword + " .Please NOTE that you are permitted change your Password. For any queries please send an email to mhuna@jhb.dvt.co.za or  pmabitsela@jhb.dvt.co.za");
+            //string Body = ("Hi " + _lean.FirstName + " " + _lean.MiddleName + " " + _lean.Surname + " ,                                                                                                   this is to confirm that you have been registered on the Learners Log System. Your login details for the Log System are " + "Username: " + _lean.Username + "  Password: " + randomPassword + " .Please NOTE that you are permitted change your Password. For any queries please send an email to mhuna@jhb.dvt.co.za or  pmabitsela@jhb.dvt.co.za");
             //mail.Body = Body;
             //mail.IsBodyHtml = true;
             //SmtpClient smtp = new SmtpClient();

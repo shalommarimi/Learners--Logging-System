@@ -33,26 +33,56 @@ namespace Logging_System.Controllers
         [HttpPost]
         public ActionResult Process(HttpPostedFileBase photo)
         {
-            if (!isValidContentType(photo.ContentType))
+            try
             {
-                ViewBag.Error = "Only Pdf & Docx files are accepted.";
-                return View("Learner_Home");
-            }
-            else if (!isValidSizeLength(photo.ContentLength))
-            {
-                ViewBag.Error = "File Size Limit, Document should be less than 2MB";
-                return View("Learner_Home");
-            }
-            else
-            {
-                if (photo.ContentLength > 0)
+                if (!isValidContentType(photo.ContentType))
                 {
-                    var fileName = Path.GetFileName(photo.FileName);
-                    var path = Path.Combine(Server.MapPath("~/ProofOfAbsence"), fileName);
-                    photo.SaveAs(path);
-                    ViewBag.fileName = photo.FileName;
+                    ViewBag.Error = "Only Pdf & Docx files are accepted.";
+                    return View("Learner_Home");
+                }
+                else if (!isValidSizeLength(photo.ContentLength))
+                {
+                    ViewBag.Error = "File Size Limit, Document should be less than 2MB";
+                    return View("Learner_Home");
+                }
+                else
+                {
+                    if (photo.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(photo.FileName);
+                        var path = Path.Combine(Server.MapPath("~/ProofOfAbsence"), fileName);
+                        photo.SaveAs(path);
+                        ViewBag.fileName = photo.FileName;
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+
+                ViewBag.Error = "Please select a PDF or Word file.";
+                return View("Learner_Home");
+            }
+            //if (!isValidContentType(photo.ContentType))
+            //{
+            //    ViewBag.Error = "Only Pdf & Docx files are accepted.";
+            //    return View("Learner_Home");
+            //}
+            //else if (!isValidSizeLength(photo.ContentLength))
+            //{
+            //    ViewBag.Error = "File Size Limit, Document should be less than 2MB";
+            //    return View("Learner_Home");
+            //}
+            //else
+            //{
+            //    if (photo.ContentLength > 0)
+            //    {
+            //        var fileName = Path.GetFileName(photo.FileName);
+            //        var path = Path.Combine(Server.MapPath("~/ProofOfAbsence"), fileName);
+            //        photo.SaveAs(path);
+            //        ViewBag.fileName = photo.FileName;
+            //    }
+            //}
 
             ViewBag.fileName = photo.FileName;
             return View("Success");

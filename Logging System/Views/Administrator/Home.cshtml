@@ -8,7 +8,7 @@
 }
 <html !DOCTYPE>
 <head>
-    <title>Register Learner</title>
+    <title>Administrator Home</title>
     <link href="~/Css/Learner.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -29,25 +29,27 @@
          });
     </script>  <br /><br /><br />
 
-  
+    <div class="logged col-xs-3">
+
+        @if (Session["FirstName"] != null || Session["Surname"] != null)
+        {
+            <text>
+                Administrator: @Session["FirstName"].ToString()  @Session["Surname"].ToString()
+            </text>
+            @*<text>
+                    Role: @Session["Role"].ToString()
+                </text>*@
+        }
+    </div>
+
+
 
     @using (Html.BeginForm())
             {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <div class="logged col-sm-2">
-
-                @if (Session["FirstName"] != null || Session["Surname"] != null)
-                {
-                    <text>
-                        Mentor: @Session["FirstName"].ToString()  @Session["Surname"].ToString()
-                    </text>
-                    @*<text>
-                    Role: @Session["Role"].ToString()
-                </text>*@
-                }
-            </div>
+            
 
           
             @Html.ValidationSummary(true)
