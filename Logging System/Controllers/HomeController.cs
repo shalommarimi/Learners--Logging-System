@@ -10,7 +10,7 @@ namespace Logging_System.Controllers
     {
         
         // GET:
-        public ActionResult Index()
+        public ActionResult Index() 
         {
             return View();
         }
