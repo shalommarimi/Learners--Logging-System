@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Learn.BL;
+using System.Web.Security;
 
 namespace Logging_System.Controllers
 {
@@ -64,7 +65,12 @@ namespace Logging_System.Controllers
 
         }
 
+        public ActionResult Logout()
+        {
 
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Mentor");
+        }
 
         public string DeleteLearner(int ID)
         {

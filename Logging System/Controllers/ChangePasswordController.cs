@@ -44,9 +44,14 @@ namespace Logging_System.Controllers
             }
            
         }
+        public ActionResult Logout()
+        {
+
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Learner");
+        }
 
 
-      
         public ActionResult CheckCheck(string txtUsername, string txtPassword)
         {
             Dal dal = new Dal();

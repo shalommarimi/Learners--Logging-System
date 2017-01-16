@@ -438,6 +438,8 @@
     <Content Include="Content\themes\MyThemes\start\jquery-ui.css" />
     <Content Include="Content\themes\MyThemes\start\jquery-ui.min.css" />
     <Content Include="Content\themes\MyThemes\start\theme.css" />
+    <Content Include="Css\font-awesome.css" />
+    <Content Include="Css\font-awesome.min.css" />
     <Content Include="Css\General.css" />
     <Content Include="Css\Home.css" />
     <Content Include="Css\Learner.css" />
@@ -455,9 +457,13 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\BBD-Custom-Login.png" />
     <Content Include="Images\Dynamic.png" />
+    <Content Include="Images\Dynasmic.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\Lab_2.jpg" />
     <Content Include="Images\Lab_3.jpg" />
+    <Content Include="Images\Dynamicc.png" />
+    <Content Include="Images\Sub.jpg" />
+    <Content Include="Images\Sub.png" />
     <Content Include="Images\vlcsnap-error290.png" />
     <Content Include="Javascript\Grid.js" />
     <Content Include="Javascript\Upload.js" />

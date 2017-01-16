@@ -22,6 +22,7 @@ namespace Logging_System.Content
         {
             return View();
         }
+       
 
         [Authorize]
         [HttpPost]

@@ -1,51 +1,53 @@
-﻿body {
-    background-color: #ffffff;
-    /*background-image: url(../Images/Lab_2.jpg);*/
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) ), url('../Images/BBD-Custom-Login.png');
+﻿.btn {
+    color: #ffffff;
+    background-color: #2b398b;
+}
+.sign_in {
+    width: 370px;
+    height: 62px;
     background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.6;
+    background-size: 370px 62px;
+    border: none;
+    cursor: pointer;
     
 }
+header{
 
-ul#Primary {
-    margin: 0 auto;
+    padding-top:100px;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
     text-align: center;
-    padding: 350px;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
-
-    ul#Primary li {
-        display: inline;
-        box-shadow: 3px;
- }
-
-ul#Primary li a {
-            /*background-color: #fbfbfb;*/
-            background-color: #fdbb30;
-            color: #2b398b;
-            padding: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
+body {
+    margin: 0;
 }
-
-            ul#Primary li a:hover {
-                /*background-color: #fdbb30;*/
-                color: #2b398b;
-                background-color: #fbfbfb;
-            }
-
-.Wrapper {
+.form-signin .form-signin-heading, .form-signin{
+    /*margin-bottom: 10px;*/
+}
+.form-signin {
+    max-width: 400px;
+    padding: 15px;
     margin: 0 auto;
-    /*width: 960px;*/
 }
 
-    .Wrapper h1 {
-        color: #f39c12;
-        text-align: center;
-        padding: 300px;
-    }
 
-body, html {
-    min-height: 100%;
-}
+
+

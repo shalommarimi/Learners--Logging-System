@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Logging_System.Controllers
 {   
     public class LearnersHomeController : Controller
     {
         // GET: LearnersHome
+      
         [Authorize]
         public ActionResult Learner_Home()
         {
@@ -63,27 +65,7 @@ namespace Logging_System.Controllers
                 ViewBag.Error = "Please select a PDF or Word file.";
                 return View("Learner_Home");
             }
-            //if (!isValidContentType(photo.ContentType))
-            //{
-            //    ViewBag.Error = "Only Pdf & Docx files are accepted.";
-            //    return View("Learner_Home");
-            //}
-            //else if (!isValidSizeLength(photo.ContentLength))
-            //{
-            //    ViewBag.Error = "File Size Limit, Document should be less than 2MB";
-            //    return View("Learner_Home");
-            //}
-            //else
-            //{
-            //    if (photo.ContentLength > 0)
-            //    {
-            //        var fileName = Path.GetFileName(photo.FileName);
-            //        var path = Path.Combine(Server.MapPath("~/ProofOfAbsence"), fileName);
-            //        photo.SaveAs(path);
-            //        ViewBag.fileName = photo.FileName;
-            //    }
-            //}
-
+         
             ViewBag.fileName = photo.FileName;
             return View("Success");
 
@@ -106,6 +88,12 @@ namespace Logging_System.Controllers
         {
             var FileVirtualPath = "~/ProofOfAbsence/" + ImageName;
             return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+        }
+        public ActionResult Logout()
+        {
+
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Learner");
         }
 
 

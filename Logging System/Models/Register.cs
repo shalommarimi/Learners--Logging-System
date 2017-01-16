@@ -149,21 +149,21 @@ namespace Logging_System.Models
                 + "','" + randomPassword
                 + "','" + _lean.IsActive + "')";
 
-            //MailMessage mail = new MailMessage();
-            //mail.To.Add(_lean.Email);
-            //mail.From = new MailAddress("learnerslogsystem@gmail.com");
-            //mail.Subject = ("Learner's Login Details");
-            //string Body = ("Hi " + _lean.FirstName + " " + _lean.MiddleName + " " + _lean.Surname + " ,                                                                                                   this is to confirm that you have been registered on the Learners Log System. Your login details for the Log System are " + "Username: " + _lean.Username + "  Password: " + randomPassword + " .Please NOTE that you are permitted change your Password. For any queries please send an email to mhuna@jhb.dvt.co.za or  pmabitsela@jhb.dvt.co.za");
-            //mail.Body = Body;
-            //mail.IsBodyHtml = true;
-            //SmtpClient smtp = new SmtpClient();
-            //smtp.Host = "smtp.gmail.com";
-            //smtp.Port = 587;
-            //smtp.UseDefaultCredentials = false;
-            //smtp.Credentials = new System.Net.NetworkCredential
-            //("learnerslogsystem@gmail.com", "Jedia.01");
-            //smtp.EnableSsl = true;
-            //smtp.Send(mail);
+            MailMessage mail = new MailMessage();
+            mail.To.Add(_lean.Email);
+            mail.From = new MailAddress("learnerslogsystem@gmail.com");
+            mail.Subject = ("Mentor's Login Details");
+            string Body = ("Hi " + _lean.FirstName + " " + _lean.MiddleName + " " + _lean.Surname + " ,                                                                                                   this is to confirm that you have been registered on the Learners Log System. Your login details for the Log System are " + "Username: " + _lean.Username + "  Password: " + randomPassword + " .Please NOTE that you are permitted change your Password. For any queries please send an email to mhuna@jhb.dvt.co.za or  pmabitsela@jhb.dvt.co.za");
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential
+            ("learnerslogsystem@gmail.com", "Jedia.01");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
 
             cmd.Connection = con;
 

@@ -9,7 +9,7 @@ namespace Logging_System.Controllers
     public class HomeController : Controller
     {
         
-        // GET:
+        //GET:
         public ActionResult Index() 
         {
             return View();

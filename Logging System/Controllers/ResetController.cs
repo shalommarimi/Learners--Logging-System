@@ -52,6 +52,7 @@ namespace Logging_System.Controllers
                 from frm in dal.learners.ToList()
                 where frm.RSAID == txtUsername && frm.Email == txtPassword && frm.IsUserActive == true
                 select frm).Single();
+              
             }
             catch (Exception)
             {
@@ -72,7 +73,8 @@ namespace Logging_System.Controllers
             }
             else
             {
-                return View("Reset");
+                //return View("Reset");
+                return RedirectToAction("Administrator", "Login");
             }
 
         }
