@@ -438,6 +438,7 @@
     <Content Include="Content\themes\MyThemes\start\jquery-ui.css" />
     <Content Include="Content\themes\MyThemes\start\jquery-ui.min.css" />
     <Content Include="Content\themes\MyThemes\start\theme.css" />
+    <Content Include="Css\Admin.css" />
     <Content Include="Css\font-awesome.css" />
     <Content Include="Css\font-awesome.min.css" />
     <Content Include="Css\General.css" />
@@ -466,6 +467,7 @@
     <Content Include="Images\Sub.png" />
     <Content Include="Images\vlcsnap-error290.png" />
     <Content Include="Javascript\Grid.js" />
+    <Content Include="Javascript\hodeloader.js" />
     <Content Include="Javascript\Upload.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -553,6 +555,7 @@
     <Compile Include="Controllers\RegisteredLearnersController.cs" />
     <Compile Include="Controllers\RegisteredMentorsController.cs" />
     <Compile Include="Controllers\ResetController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SignController.cs" />
     <Compile Include="EFramework\Dal.cs" />
     <Compile Include="Global.asax.cs">
@@ -591,6 +594,7 @@
     <Content Include="Views\Administrator\Home.cshtml" />
     <Content Include="Views\RegisteredLearners\RegLearners.cshtml" />
     <Content Include="Views\RegisteredMentors\RegisteredMentors.cshtml" />
+    <Content Include="Views\Session\SessionExpired.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

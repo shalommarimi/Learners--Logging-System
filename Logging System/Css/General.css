@@ -1,5 +1,4 @@
 ﻿body {
-    /*text-align:center;*/
     font-size:large;
     margin: 0 auto;
 }
@@ -7,13 +6,12 @@
 
 
 
-.Wrapper h2 {
+.Wrapper h4 {
 
     color:#f39c12;
 }
 .buttons {
     margin: 0px;
-    /*float:left;*/
     float: left;
     margin-top: 19px;
 }

@@ -18,49 +18,56 @@
     <script src="~/Javascript/Upload.js"></script>
 </head>
 <body>
-   
+
 
     <div class="container">
 
-     
-        <h2>Comment | Complaint | Suggestion | Report</h2>
+    <br /><br />
 
-
-        <div class="panel-body">
-         
-
-            <div class="logged">
-                @if (Session["Names"] != null || Session["Surname"] != null)
-            {
-                    <text>
-                        Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
-                    </text>
-                }
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align:center;">Learners Portal</h3>
             </div>
+            <div class="panel-body" style="text-align:left;">
+
+
+                <div class="logged">
+                    @if (Session["Names"] != null || Session["Surname"] != null)
+            {
+                        <text>
+                            Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
+                        </text>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <h3 class="panel-title" style="text-align:left; color:#fdbb30; font-weight:bold;">Suggestion | Complain | Comments | Report</h3>
+        <div class="panel-body">
 
             <div class="form-horizontal">
 
                 @using (Html.BeginForm())
                 {
                     @Html.ValidationSummary()
-                  
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                @ViewBag.Message
-                            </div>
-                           
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @ViewBag.Message
                         </div>
+
+                    </div>
                         <fieldset>
 
                             <div class="form-group ">
-                               
-                                   @Html.LabelFor(model => model.Sendto, new { @class = "col-sm-2" })
-                               
-                                    <div class="col-sm-3">
-                                        @Html.TextBoxFor(model => model.Sendto, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Sendto)
-                                    </div>
+
+                                @Html.LabelFor(model => model.Sendto, new { @class = "col-sm-2" })
+
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.Sendto, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Sendto)
                                 </div>
+                            </div>
 
 
 
@@ -98,39 +105,51 @@
             </div>
         </div>
 
-            @using (Html.BeginForm("Process", "LearnersHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Process", "LearnersHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <div style="color:rgba(255, 0, 0, 0.88);">
+            <div style="color:rgba(255, 0, 0, 0.88);">
 
-                    @ViewBag.Error
-                 </div>
-
-
-                    <div class="form-group">
-                        <text>Only PDF and Docx are accepted</text>
-                        <text>Only files that 1MB or less are accepted</text>
-                        <h2>Upload Proof Of Absence</h2>
-                        <input type="file" id="file" class="btn btn-primary" name="photo" value="Browse File" />
-
-                        <input type="submit" class="btn btn-primary" name="Upload" value="Upload" style="margin:3px" />
-                     
-
-                    </div>
-                    }
-
-                    <div class="form-group">
+                @ViewBag.Error
+            </div>
 
 
-                        <input type="button" name="submit" class="btn btn-primary" value="Logbook" onclick="location.href='@Url.Action("SignLogBook", "Logbook")'" />
-                        <input type="button" name="submit" class="btn btn-primary" value="Evaluation Form" onclick="location.href='@Url.Action("CompleteMonthlyEvaluationForm", "MonthlyEvaluationForm")'" />
-                        <input type="button" name="submit" class="btn btn-primary" value="Change Password" onclick="location.href='@Url.Action("ChangePassword", "ChangePassword")'" />
-                        <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Logout", "Learner")'" />
-                        <input type="button" name="submit" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+                <div class="form-group">
+                    <text>Only PDF and Docx are accepted</text><br />
+                    <text>Only files that are 1MB or less are accepted</text>
+                    <h2>Upload Proof Of Absence</h2>
+                    <input type="file" id="file" class="btn btn-primary" name="photo" value="Browse File" />
 
-                    </div>
+                    <input type="submit" class="btn btn-primary" name="Upload" value="Upload" style="margin:3px" />
 
 
                 </div>
+        }
+
+        <div class="form-group">
+
+
+            <input type="button" name="submit" class="btn btn-primary" value="Logbook" onclick="location.href='@Url.Action("SignLogBook", "Logbook")'" />
+            <input type="button" name="submit" class="btn btn-primary" value="Evaluation Form" onclick="location.href='@Url.Action("CompleteMonthlyEvaluationForm", "MonthlyEvaluationForm")'" />
+            <input type="button" name="submit" class="btn btn-primary" value="Change Password" onclick="location.href='@Url.Action("ChangePassword", "ChangePassword")'" />
+            <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Logout", "Learner")'" />
+            <input type="button" name="submit" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+
+        </div>
+        @*<div class="bs-example">
+                <div class="panel panel-default small col-sm-2">
+                    <div class="panel-heading">Complete</div>
+                    <div class="panel-body">Weekly Logbook<br> <a href="#">Click here</a> to enable the page.</div>
+                </div>
+            </div>*@
+        @*<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align:center;">Suggestion | Complain | Comments | Report</h3>
+            </div>
+            <div class="panel-body" style="text-align:center;">Enter Message</div>
+        </div>*@
+
+
+    </div>
 
 
 

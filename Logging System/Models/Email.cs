@@ -22,7 +22,7 @@ namespace Logging_System.Models
         public string Subject { get; set; }
 
         [Required(ErrorMessage = "Message field is required")]
-        [Display(Name = "Actal Message")]
+        [Display(Name = "Message | Content")]
         public string Message { get; set; }
 
 
