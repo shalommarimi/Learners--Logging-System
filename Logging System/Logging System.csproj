@@ -47,6 +47,18 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\Client Invoice\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\Client Invoice\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\Client Invoice\itextsharp.xtra.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -562,6 +574,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Evaluation.cs" />
+    <Compile Include="Models\Logbook.cs" />
     <Compile Include="Models\NewPassword.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Email.cs" />
@@ -580,7 +594,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\Sign\Sign.cshtml" />
     <Content Include="Views\Mentor\Login.cshtml" />
-    <Content Include="Views\Logbook\SignLogBook.cshtml" />
     <Content Include="Views\MonthlyEvaluationForm\CompleteMonthlyEvaluationForm.cshtml" />
     <Content Include="Views\LearnersHome\Learner_Home.cshtml" />
     <Content Include="Views\Registered\RegisteredLearners.cshtml" />
@@ -595,6 +608,7 @@
     <Content Include="Views\RegisteredLearners\RegLearners.cshtml" />
     <Content Include="Views\RegisteredMentors\RegisteredMentors.cshtml" />
     <Content Include="Views\Session\SessionExpired.cshtml" />
+    <Content Include="Views\Logbook\SignLogBook.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -606,6 +620,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="ProofOfAbsence\" />
     <Folder Include="Views\Email\" />
+    <Folder Include="WeeklyLogbooks\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

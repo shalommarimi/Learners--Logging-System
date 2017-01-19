@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logging_System.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +12,21 @@ namespace Logging_System.Controllers
     {
         // GET: Logbook
         [Authorize]
-        public ActionResult SignLogBook()
+        public ActionResult SignLogBook(Logbook logbooks)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Logbook log = new Logbook();
+                string results = log.CreateLogbook(logbooks);
+                ViewData["result"] = results;
+                ModelState.Clear();
+                return View();
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Could Not Create Logbook");
+                return View();
+            }
         }
         public ActionResult Logout()
         {
@@ -21,5 +34,6 @@ namespace Logging_System.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Learner");
         }
+
     }
 }

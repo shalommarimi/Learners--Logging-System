@@ -8,6 +8,12 @@
 
     color:#fdbb30;
 }
+.headings h4{
+
+    color:#fdbb30;
+    font-weight:bold;
+    padding-left:100px;
+}
 .container {
     margin: 0 auto;
     position:center;
