@@ -12,13 +12,15 @@ namespace Logging_System.Models
 {
     public class Logbook
     {
+
+
         //The information
 
 
-        [Required(ErrorMessage ="Ignore,Unless incorrect")]
-        
+        [Required(ErrorMessage = "Ignore,Unless incorrect")]
+
         [Display(Name = "Learner's Name:")]
-        public string LearnerName { get; set;}
+        public string LearnerName { get; set; }
 
         [Display(Name = "Mentor's Name:")]
         [Required(ErrorMessage = "Ignore,Unless incorrect")]
@@ -27,7 +29,7 @@ namespace Logging_System.Models
         [Display(Name = "Mentors's Tel:")]
         [Required(ErrorMessage = "Ignore,Unless incorrect")]
         public string MentorTel { get; set; }
-        
+
         [Required(ErrorMessage = "Select appropriate")]
         [Display(Name = "Learnership Intake:")]
         public string Learnership { get; set; }
@@ -38,11 +40,11 @@ namespace Logging_System.Models
 
         //Day One--Monday
 
-            
+
         [DataType(DataType.Date)]
         [Required]
         [Display(Name = "Monday's Date:")]
-        [DisplayFormat(DataFormatString = "{0:DD-MM-YYYY}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Day01 { get; set; }
 
         [Required]
@@ -58,14 +60,14 @@ namespace Logging_System.Models
         [Required]
         [Display(Name = "Time Taken(Hours):")]
         public string TimeTakenDay01 { get; set; }
-      
 
-        [Required]
+
+        //[Required]
         [Display(Name = "Problems Experienced(If Any)")]
         public string ProblemsDay01 { get; set; }
         [Display(Name = "General Comments:")]
 
-        [Required]
+        //[Required]
         public string CommentsDay01 { get; set; }
 
 
@@ -92,12 +94,12 @@ namespace Logging_System.Models
         public string TimeTakenDay02 { get; set; }
 
 
-        [Required]
+        //[Required]
         [Display(Name = "Problems Experienced(If any)")]
         public string ProblemsDay02 { get; set; }
         [Display(Name = "General Comments:")]
 
-        [Required]
+        //[Required]
         public string CommentsDay02 { get; set; }
 
         //Day 03 Wednesday
@@ -123,12 +125,12 @@ namespace Logging_System.Models
         public string TimeTakenDay03 { get; set; }
 
 
-        [Required]
+        //[Required]
         [Display(Name = "Problems Experienced(If any)")]
         public string ProblemsDay03 { get; set; }
         [Display(Name = "General Comments:")]
 
-        [Required]
+        //[Required]
         public string CommentsDay03 { get; set; }
 
         //Day 4 Thursday
@@ -154,12 +156,12 @@ namespace Logging_System.Models
         public string TimeTakenDay04 { get; set; }
 
 
-        [Required]
+        //[Required]
         [Display(Name = "Problems Experienced(If any)")]
         public string ProblemsDay04 { get; set; }
         [Display(Name = "General Comments:")]
 
-        [Required]
+        //[Required]
         public string CommentsDay04 { get; set; }
 
         //Day 5 Friday
@@ -185,16 +187,16 @@ namespace Logging_System.Models
         public string TimeTakenDay05 { get; set; }
 
 
-        [Required]
+        //[Required]
         [Display(Name = "Problems Experienced(If any)")]
         public string ProblemsDay05 { get; set; }
         [Display(Name = "General Comments:")]
 
-        [Required]
+        //[Required]
         public string CommentsDay05 { get; set; }
 
 
-        
+
 
         [Required]
         [Display(Name = "Learner's Signature:")]
@@ -208,9 +210,9 @@ namespace Logging_System.Models
 
 
         //Allow preview
-        [Display(Name = "Logbook Preview:")]
-        public RadioCheckField Preview { get; set; }
-        
+        [Display(Name = "Would you like to preview your Logbook? (Tick if YES)")]
+        public string Preview { get; set; }
+
 
 
 
@@ -218,73 +220,235 @@ namespace Logging_System.Models
 
         public string CreateLogbook(Logbook _logbook)
         {
-            Document document = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+            string Date = DateLearnerSigned.ToString();
+            string WL = "Weekly Logbook";
+            // Document document = new Document(PageSize.A4.Rotate(), 10f, 10f, 10f, 0f);
+            Document document = new Document();
+            document.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            //Document document = new Document(new RectangleReadOnly(842, 595), 88f, 88f, 10f, 10f);
+            // Document document = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
             DateTime Created = DateTime.Now;
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + _logbook.LearnerName + ".pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + _logbook.LearnerName + " " + WL + ".pdf", FileMode.Create));
 
-            
+
+
             document.Open();
 
-            iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance("C:\\Users\\SMarimi\\Documents\\Visual Studio 2015\\Projects\\Profile\\Profile\\img\\android.png");
-            document.Add(PNG);
-            PNG.ScalePercent(25f);
-            PNG.SetAbsolutePosition(document.PageSize.Width + 36f + 72f, document.PageSize.Height + 36f + 216.6f);
-
-            Paragraph info = new Paragraph();//("Invoice Number: " + inv + invoice + "\r\n");
-            string line = "";
-            info.Add("                                                Learner Daily Log                                       " + "\r\n");
-            info.Add(line);
-            info.Add(line);
-           
-
-            info.Add("LEARNER DAILY ACTIVITIES LOGBOOK");
-            info.Add(line);
-            info.Add(line);
-            info.Add(line);
-            info.Add("Learner's Name: " + _logbook.LearnerName + "\r\n");
-            info.Add(line);
-            info.Add("Mentor's Name and Tel: " + _logbook.MentorName +  _logbook.MentorTel+ "\r\n");
-            info.Add(line);
-            info.Add(line);
-            info.Add("Learnership Intake: " + _logbook.Learnership + "\r\n");
-            info.Add(line);
-            info.Add("Company Name: " + _logbook.CompanyName + "\r\n");
-            info.Add(line);
-            info.Add("Please refer to Workplace Task Maping for a breakdown of prescribed activities.");
 
 
-           
+            Font arial = FontFactory.GetFont("Arial", 12, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
 
+
+
+
+
+            Paragraph info = new Paragraph();
+            Paragraph infos = new Paragraph();
+            Paragraph small = new Paragraph();
+            Paragraph smallb = new Paragraph();
+            Paragraph inforhead = new Paragraph();
+            Paragraph head = new Paragraph();
+
+            inforhead.SpacingBefore = 12;
+            head.SpacingAfter = 14;
+            small.SpacingBefore = 10;
+
+
+
+            iTextSharp.text.Font contentFont = iTextSharp.text.FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.NORMAL);
+            info.Font = contentFont;
+
+            iTextSharp.text.Font smallfont = iTextSharp.text.FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.NORMAL);
+            small.Font = smallfont;
+
+            iTextSharp.text.Font heads = iTextSharp.text.FontFactory.GetFont("Calibri(body)", 12, iTextSharp.text.Font.BOLD);
+            heads.SetStyle(Font.ITALIC);
+            head.Font = heads;
+
+            iTextSharp.text.Font smallbold = iTextSharp.text.FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.NORMAL);
+            smallbold.SetStyle(Font.BOLD);
+            smallb.Font = smallbold;
+
+            iTextSharp.text.Font infohea = iTextSharp.text.FontFactory.GetFont("Calibri(body)", 12, iTextSharp.text.Font.BOLD);
+            infohea.SetStyle(Font.ITALIC);
+            inforhead.Font = infohea;
+
+
+
+            //For name
+            iTextSharp.text.Font contentTop = iTextSharp.text.FontFactory.GetFont("Arial", 13, iTextSharp.text.Font.ITALIC);
+            contentTop.SetStyle(Font.BOLD);
+            contentTop.SetStyle(Font.UNDERLINE);
+
+            info.Font = contentFont;
+            infos.Font = contentTop;
+            string line = "           ";
+            //info.Add("                                                           Learner Daily Log                                       " + "\r\n");
             info.Add(line);
+            info.Add(line);
+            info.Add("Learner Daily Log  " + "\r\n");
+            head.Add("LEARNER DAILY ACTIVITIES LOGBOOK  " + "\r\n");
+            info.Add(line + "\r\n");
+            infos.Add("Learner's Name: " + _logbook.LearnerName + "\r\n");
+            info.Add(line + "\r\n");
+            infos.Add("Mentor's Name and Tel: " + _logbook.MentorName + ": " + _logbook.MentorTel + "\r\n");
+            info.Add(line + "\r\n");
+            infos.Add("Learnership Intake: " + _logbook.Learnership + "\r\n");
+            info.Add(line + "\r\n");
+            infos.Add("Company Name: " + _logbook.CompanyName);
+            inforhead.Add("Please refer to Workplace Task Maping for a breakdown of prescribed activities." + "\r\n");
+            info.Add(line + "\r\n");
+            info.Add(line + "\r\n");
+            small.Add("This form must be completed everyday and signed off by both the Learner and respective Mentor." + "\r\n");
+            small.Add("This form is intended for generic use.");
+
+            smallb.Add("Please return to Torque IT at the follwing Fax number every friday:086 632 9687 or Thembekile.Madlala@torque-it.com and copy.");
+
+            infos.Add(line + "\r\n");
             document.Add(info);
+            document.Add(head);
+            document.Add(infos);
+            document.Add(small);
+            document.Add(smallb);
+            document.Add(inforhead);
 
 
 
-            PdfPTable table = new PdfPTable(3);
+            PdfPTable table = new PdfPTable(8);
+            table.SpacingBefore = 14;
+            // table.TotalWidth = 50;
+            table.WidthPercentage = 100;
+           PdfPCell Cell = new PdfPCell(new Phrase("Date", new Font(arial)));
+            PdfPCell Cell1 = new PdfPCell(new Phrase("Task/s Completed", new Font(arial)));
+            PdfPCell Cell2 = new PdfPCell(new Phrase("Completed to satidfaction Yes/No", new Font(arial)));
+            PdfPCell Cell3 = new PdfPCell(new Phrase("Time Taken in Hours", new Font(arial)));
+            PdfPCell Cell4 = new PdfPCell(new Phrase("Problems Experienced(if any)", new Font(arial)));
+            PdfPCell Cell5 = new PdfPCell(new Phrase("General Comments", new Font(arial)));
+            PdfPCell Cell6 = new PdfPCell(new Phrase("Learner's Signature", new Font(arial)));
+            PdfPCell Cell7 = new PdfPCell(new Phrase("Mentor's Signature", new Font(arial)));
 
-            PdfPCell Cell = new PdfPCell(new Phrase("Product"));
+
+
+
             Cell.Colspan = 1;
-            Cell.HorizontalAlignment = 0;
-            table.AddCell(Cell);
+            Cell.HorizontalAlignment = 1;
+            table.AddCell(Cell).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell1).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell2).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell3).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell4).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell5).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell6).BackgroundColor = BaseColor.LIGHT_GRAY;
+            table.AddCell(Cell7).BackgroundColor = BaseColor.LIGHT_GRAY;
+           
+
+            if (String.IsNullOrEmpty(_logbook.CommentsDay01))
+            {
+
+                _logbook.CommentsDay01 = "N/A";
+
+            }
+            else if (String.IsNullOrEmpty(_logbook.CommentsDay02))
+            {
+                _logbook.CommentsDay02 = "N/A";
+            }
+            else if (String.IsNullOrEmpty(_logbook.CommentsDay03))
+            {
+                _logbook.CommentsDay03 = "N/A";
+            }
+            else if (String.IsNullOrEmpty(_logbook.CommentsDay04))
+            {
+                _logbook.CommentsDay04 = "N/A";
+            }
+            else if (String.IsNullOrEmpty(_logbook.CommentsDay05))
+            {
+                _logbook.CommentsDay05 = "N/A";
+            }
+
+            else if (String.IsNullOrEmpty(_logbook.ProblemsDay01))
+
+            {
+                _logbook.ProblemsDay01 = "N/A";
+
+            }
+            else if (String.IsNullOrEmpty(_logbook.ProblemsDay02))
+            {
+                _logbook.ProblemsDay02 = "N/A";
+            }
+            else if (String.IsNullOrEmpty(_logbook.ProblemsDay03))
+            {
+                _logbook.ProblemsDay03 = "N/A";
+            }
+            else if (String.IsNullOrEmpty(_logbook.ProblemsDay04))
+            {
+                _logbook.ProblemsDay04 = "N/A";
+            }
+            else if (String.IsNullOrEmpty(_logbook.ProblemsDay05))
+            {
+                _logbook.ProblemsDay05 = "N/A";
+            }
 
 
-            //table.AddCell("Price (Rands)");    //col1 row 1
-            //table.AddCell("Quantity");  //col 2 row 1
-            //table.AddCell(logbook.name + ""); //col 3 row 1
-            //table.AddCell(logbook.surname + ""); // col 4 row 1
-            //table.AddCell(logbook.name + "");
 
-            //table.AddCell(logbook.name + ""); //col 3 row 1
-            //table.AddCell(logbook.surname + ""); // col 4 row 1
-            //table.AddCell(logbook.name + "");
+            //1st Row
+            table.AddCell(_logbook.Day01.ToString());
+            table.AddCell(_logbook.TaskDay01);
+            table.AddCell(_logbook.CompletedSatDay01);
+            table.AddCell(_logbook.TimeTakenDay01);
+            table.AddCell(_logbook.ProblemsDay01);
+            table.AddCell(_logbook.CommentsDay01);
+            table.AddCell(_logbook.LearnerSignature);
+            table.AddCell("M.Huna");
 
-            //table.AddCell(logbook.name + ""); //col 3 row 1
-            //table.AddCell(logbook.surname + ""); // col 4 row 1
-            //table.AddCell(logbook.name + "");
+            //2nd Row
 
-            //table.AddCell(logbook.name + ""); //col 3 row 1
-            //table.AddCell(logbook.surname + ""); // col 4 row 1
-            //table.AddCell(logbook.name + "");
+            table.AddCell(_logbook.Day02.ToString());
+            table.AddCell(_logbook.TaskDay02);
+            table.AddCell(_logbook.CompletedSatDay02);
+            table.AddCell(_logbook.TimeTakenDay02);
+            table.AddCell(_logbook.ProblemsDay02);
+            table.AddCell(_logbook.CommentsDay02);
+            table.AddCell(_logbook.LearnerSignature);
+            table.AddCell("M.Huna");
+
+            //3rd Row
+            table.AddCell(_logbook.Day03.ToString());
+            table.AddCell(_logbook.TaskDay03);
+            table.AddCell(_logbook.CompletedSatDay03);
+            table.AddCell(_logbook.TimeTakenDay03);
+            table.AddCell(_logbook.ProblemsDay03);
+            table.AddCell(_logbook.CommentsDay03);
+            table.AddCell(_logbook.LearnerSignature);
+            table.AddCell("M.Huna");
+
+            //4th Row
+
+            table.AddCell(_logbook.Day04.ToString());
+            table.AddCell(_logbook.TaskDay04);
+            table.AddCell(_logbook.CompletedSatDay04);
+            table.AddCell(_logbook.TimeTakenDay04);
+            table.AddCell(_logbook.ProblemsDay04);
+            table.AddCell(_logbook.CommentsDay04);
+            table.AddCell(_logbook.LearnerSignature);
+            table.AddCell("M.Huna");
+
+            //5th Row
+
+            table.AddCell(_logbook.Day05.ToString());
+            table.AddCell(_logbook.TaskDay05);
+            table.AddCell(_logbook.CompletedSatDay05);
+            table.AddCell(_logbook.TimeTakenDay05);
+            table.AddCell(_logbook.ProblemsDay05);
+            table.AddCell(_logbook.CommentsDay05);
+            table.AddCell(_logbook.LearnerSignature);
+            table.AddCell("M.Huna");
+
+            info.Add(line + "\r\n");
+            info.Add(line + "\r\n");
+            info.Add("                                                   Prepared by the Torque Career Campus                                       ");
+
+
 
 
             document.Add(table);
@@ -292,7 +456,12 @@ namespace Logging_System.Models
 
 
             document.Close();
-            System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\"+ _logbook.LearnerName + ".pdf");
+
+            if (_logbook.Preview == "Yes")
+            {
+                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + _logbook.LearnerName + " " + WL + ".pdf");
+            }
+
 
             try
             {

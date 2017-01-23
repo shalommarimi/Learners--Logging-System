@@ -609,6 +609,7 @@
     <Content Include="Views\RegisteredMentors\RegisteredMentors.cshtml" />
     <Content Include="Views\Session\SessionExpired.cshtml" />
     <Content Include="Views\Logbook\SignLogBook.cshtml" />
+    <Content Include="Views\Mentor\Download.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -620,7 +621,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="ProofOfAbsence\" />
     <Folder Include="Views\Email\" />
-    <Folder Include="WeeklyLogbooks\" />
+    <Folder Include="WeeklyLogbooks\Test Folder\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

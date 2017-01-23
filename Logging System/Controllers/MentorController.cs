@@ -9,6 +9,7 @@ using System.Web.Security;
 using WebMatrix.Data;
 using Learn.BL;
 using System.Net.Mail;
+using System.IO;
 
 namespace Logging_System.Controllers
 {
@@ -29,6 +30,24 @@ namespace Logging_System.Controllers
 
            return View();
         }
+        public FileResult Downloads(string ImageName)
+        {
+            var FileVirtualPath = "~/WeeklyLogbooks/" + ImageName;
+            return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+        }
+
+        public ActionResult Download()
+        {
+
+            var dir = new System.IO.DirectoryInfo(Server.MapPath("~/WeeklyLogbooks/"));
+            System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
+            foreach (var file in fileNames)
+            {
+                items.Add(file.Name);
+            }
+            return View(items);
+        }
+
 
         [Authorize]
         [HttpPost]

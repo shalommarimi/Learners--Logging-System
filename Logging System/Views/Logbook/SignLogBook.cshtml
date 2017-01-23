@@ -6,11 +6,12 @@
 @{
 
     var Hours = new SelectList(new string[] { "8 Hours", "Absent", "1 Hour", "2 Hours", "3 Hours", " 4 Hours", "5 Hours", "6 Hours", "7 Hours" });
-    var Completed = new SelectList(new string[] { "True", "False" });
+    var Preview = new SelectList(new string[] { "Yes", "No" });
+    var Completed = new SelectList(new string[] { "Yes", "No" });
     var Company = new SelectList(new string[] { "Dynamic DNA", "Dynamic Visual Technologies", "Blue Pencil", "CloudSmiths", "Indigo Cube" });
     var mentors = new SelectList(new string[] { "Prudence Mabitsela & Mthunzi Huna", "Prudence Mabitsela", "Mojalifa Tsao", "Mthunzi Huna" });
     var Learnership = new SelectList(new string[] { "NQF L5 Systems Development", "NQF L4 Systems Development", "Business Analysis", "Software Testing(SQA)" });
-    string name = @Session["Names"].ToString() +" "+ @Session["Surname"].ToString();
+    string name = @Session["Names"].ToString() + " " + @Session["Surname"].ToString();
 
 }
 <!DOCTYPE html>
@@ -162,7 +163,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ProblemsDay01, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.ProblemsDay01, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.ProblemsDay01, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.ProblemsDay01)
                 </div>
             </div>
@@ -170,7 +171,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CommentsDay01, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.CommentsDay01, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CommentsDay01, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.CommentsDay01)
                 </div>
             </div>
@@ -220,7 +221,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ProblemsDay02, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.ProblemsDay02, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.ProblemsDay02, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.ProblemsDay02)
                 </div>
             </div>
@@ -228,7 +229,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CommentsDay02, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.CommentsDay02, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CommentsDay02, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.CommentsDay02)
                 </div>
             </div>
@@ -276,7 +277,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ProblemsDay03, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.ProblemsDay03, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.ProblemsDay03, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.ProblemsDay03)
                 </div>
             </div>
@@ -284,7 +285,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CommentsDay03, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.CommentsDay03, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CommentsDay03, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.CommentsDay03)
                 </div>
             </div>
@@ -334,7 +335,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ProblemsDay04, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.ProblemsDay04, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.ProblemsDay04, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.ProblemsDay04)
                 </div>
             </div>
@@ -342,7 +343,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CommentsDay04, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.CommentsDay04, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CommentsDay04, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.CommentsDay04)
                 </div>
             </div>
@@ -395,7 +396,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ProblemsDay05, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.ProblemsDay05, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.ProblemsDay05, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.ProblemsDay05)
                 </div>
             </div>
@@ -403,7 +404,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CommentsDay05, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.CommentsDay05, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CommentsDay05, new { @class = "form-control", placeholder = "Optional" })
                     @Html.ValidationMessageFor(model => model.CommentsDay05)
                 </div>
             </div>
@@ -428,6 +429,17 @@
                     @Html.ValidationMessageFor(model => model.DateLearnerSigned)
                 </div>
             </div>
+            <br /><br /><br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Preview, htmlAttributes: new { @class = "control-label col-sm-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Preview, Preview, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Preview)
+                </div>
+            </div>
+
+
+            <br /><br /><br />
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -443,7 +455,7 @@
         {
             ViewData["result"] = null;
             <script type="text/javascript" language="javascript">
-                alert("Successfully Submitted Your Weekly Logbooks");
+                alert("Successfully Submitted Your Weekly Logbook");
             </script>
         }
     }
