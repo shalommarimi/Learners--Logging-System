@@ -35,11 +35,31 @@ namespace Logging_System.Controllers
             var FileVirtualPath = "~/WeeklyLogbooks/" + ImageName;
             return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
         }
-
+        [Authorize]
         public ActionResult Download()
         {
 
             var dir = new System.IO.DirectoryInfo(Server.MapPath("~/WeeklyLogbooks/"));
+            System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
+            foreach (var file in fileNames)
+            {
+                items.Add(file.Name);
+            }
+            return View(items);
+        }
+
+
+        //For Logbooks
+        public FileResult Downloadings(string Monthly)
+        {
+            var FileVirtualPath = "~/Monthly Evaluation Forms/" + Monthly;
+            return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+        }
+        [Authorize]
+        public ActionResult DownloadMEF()
+        {
+
+            var dir = new System.IO.DirectoryInfo(Server.MapPath("~/Monthly Evaluation Forms/"));
             System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
             foreach (var file in fileNames)
             {
@@ -114,6 +134,7 @@ namespace Logging_System.Controllers
         {
 
             FormsAuthentication.SignOut();
+            
             return View("Login");
         }
 

@@ -202,6 +202,9 @@ namespace Logging_System.Models
         [Display(Name = "Learner's Signature:")]
         public string LearnerSignature { get; set; }
 
+        [Display(Name = "Signature FontSyle")]
+        public string fontStyle { get; set; }
+
         [DataType(DataType.Date)]
         [Required]
         [Display(Name = "Date Learner Signed:")]
@@ -218,8 +221,15 @@ namespace Logging_System.Models
 
 
 
+
+
         public string CreateLogbook(Logbook _logbook)
         {
+
+
+
+
+
             string Date = DateLearnerSigned.ToString();
             string WL = "Weekly Logbook";
             // Document document = new Document(PageSize.A4.Rotate(), 10f, 10f, 10f, 0f);
@@ -264,6 +274,7 @@ namespace Logging_System.Models
 
             iTextSharp.text.Font heads = iTextSharp.text.FontFactory.GetFont("Calibri(body)", 12, iTextSharp.text.Font.BOLD);
             heads.SetStyle(Font.ITALIC);
+
             head.Font = heads;
 
             iTextSharp.text.Font smallbold = iTextSharp.text.FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.NORMAL);
@@ -287,7 +298,7 @@ namespace Logging_System.Models
             //info.Add("                                                           Learner Daily Log                                       " + "\r\n");
             info.Add(line);
             info.Add(line);
-            info.Add("Learner Daily Log  " + "\r\n");
+            info.Add(line + line + line + line + line + line + line + line + line + line + line + line + "Learner Daily Log  " + "\r\n");
             head.Add("LEARNER DAILY ACTIVITIES LOGBOOK  " + "\r\n");
             info.Add(line + "\r\n");
             infos.Add("Learner's Name: " + _logbook.LearnerName + "\r\n");
@@ -319,13 +330,39 @@ namespace Logging_System.Models
             table.SpacingBefore = 14;
             // table.TotalWidth = 50;
             table.WidthPercentage = 100;
-           PdfPCell Cell = new PdfPCell(new Phrase("Date", new Font(arial)));
+
+
+
+            //Checking which font was selected
+            Font selectedFont;
+
+            Font arialsignature = FontFactory.GetFont("Bradley Hand ITC", 13, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
+
+            Font arialsignature1 = FontFactory.GetFont("Blackadder ITC", 13, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
+
+            Font arialsignature2 = FontFactory.GetFont("Brush Script Std", 13, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
+
+            Font arialsignature3 = FontFactory.GetFont("Buxton Sketch", 13, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
+
+            Font arialsignature4 = FontFactory.GetFont("Informal Roman", 13, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
+
+            Font arialsignature5 = FontFactory.GetFont("Matura MT Script Capitals", 13, BaseColor.BLACK);
+            arial.SetStyle(Font.BOLD);
+
+
+
+            PdfPCell Cell = new PdfPCell(new Phrase("Date", new Font(arial)));
             PdfPCell Cell1 = new PdfPCell(new Phrase("Task/s Completed", new Font(arial)));
             PdfPCell Cell2 = new PdfPCell(new Phrase("Completed to satidfaction Yes/No", new Font(arial)));
             PdfPCell Cell3 = new PdfPCell(new Phrase("Time Taken in Hours", new Font(arial)));
             PdfPCell Cell4 = new PdfPCell(new Phrase("Problems Experienced(if any)", new Font(arial)));
             PdfPCell Cell5 = new PdfPCell(new Phrase("General Comments", new Font(arial)));
-            PdfPCell Cell6 = new PdfPCell(new Phrase("Learner's Signature", new Font(arial)));
+            PdfPCell Cell6 = new PdfPCell(new Phrase("Learner's Signature", new Font(arialsignature3)));
             PdfPCell Cell7 = new PdfPCell(new Phrase("Mentor's Signature", new Font(arial)));
 
 
@@ -341,58 +378,11 @@ namespace Logging_System.Models
             table.AddCell(Cell5).BackgroundColor = BaseColor.LIGHT_GRAY;
             table.AddCell(Cell6).BackgroundColor = BaseColor.LIGHT_GRAY;
             table.AddCell(Cell7).BackgroundColor = BaseColor.LIGHT_GRAY;
-           
-
-            if (String.IsNullOrEmpty(_logbook.CommentsDay01))
-            {
-
-                _logbook.CommentsDay01 = "N/A";
-
-            }
-            else if (String.IsNullOrEmpty(_logbook.CommentsDay02))
-            {
-                _logbook.CommentsDay02 = "N/A";
-            }
-            else if (String.IsNullOrEmpty(_logbook.CommentsDay03))
-            {
-                _logbook.CommentsDay03 = "N/A";
-            }
-            else if (String.IsNullOrEmpty(_logbook.CommentsDay04))
-            {
-                _logbook.CommentsDay04 = "N/A";
-            }
-            else if (String.IsNullOrEmpty(_logbook.CommentsDay05))
-            {
-                _logbook.CommentsDay05 = "N/A";
-            }
-
-            else if (String.IsNullOrEmpty(_logbook.ProblemsDay01))
-
-            {
-                _logbook.ProblemsDay01 = "N/A";
-
-            }
-            else if (String.IsNullOrEmpty(_logbook.ProblemsDay02))
-            {
-                _logbook.ProblemsDay02 = "N/A";
-            }
-            else if (String.IsNullOrEmpty(_logbook.ProblemsDay03))
-            {
-                _logbook.ProblemsDay03 = "N/A";
-            }
-            else if (String.IsNullOrEmpty(_logbook.ProblemsDay04))
-            {
-                _logbook.ProblemsDay04 = "N/A";
-            }
-            else if (String.IsNullOrEmpty(_logbook.ProblemsDay05))
-            {
-                _logbook.ProblemsDay05 = "N/A";
-            }
 
 
 
             //1st Row
-            table.AddCell(_logbook.Day01.ToString());
+            table.AddCell(_logbook.Day01.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay01);
             table.AddCell(_logbook.CompletedSatDay01);
             table.AddCell(_logbook.TimeTakenDay01);
@@ -403,7 +393,7 @@ namespace Logging_System.Models
 
             //2nd Row
 
-            table.AddCell(_logbook.Day02.ToString());
+            table.AddCell(_logbook.Day02.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay02);
             table.AddCell(_logbook.CompletedSatDay02);
             table.AddCell(_logbook.TimeTakenDay02);
@@ -413,7 +403,7 @@ namespace Logging_System.Models
             table.AddCell("M.Huna");
 
             //3rd Row
-            table.AddCell(_logbook.Day03.ToString());
+            table.AddCell(_logbook.Day03.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay03);
             table.AddCell(_logbook.CompletedSatDay03);
             table.AddCell(_logbook.TimeTakenDay03);
@@ -424,7 +414,7 @@ namespace Logging_System.Models
 
             //4th Row
 
-            table.AddCell(_logbook.Day04.ToString());
+            table.AddCell(_logbook.Day04.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay04);
             table.AddCell(_logbook.CompletedSatDay04);
             table.AddCell(_logbook.TimeTakenDay04);
@@ -435,7 +425,7 @@ namespace Logging_System.Models
 
             //5th Row
 
-            table.AddCell(_logbook.Day05.ToString());
+            table.AddCell(_logbook.Day05.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay05);
             table.AddCell(_logbook.CompletedSatDay05);
             table.AddCell(_logbook.TimeTakenDay05);
@@ -443,15 +433,11 @@ namespace Logging_System.Models
             table.AddCell(_logbook.CommentsDay05);
             table.AddCell(_logbook.LearnerSignature);
             table.AddCell("M.Huna");
-
+            info.Add("Prepared by the Torque Career Campus");
             info.Add(line + "\r\n");
-            info.Add(line + "\r\n");
-            info.Add("                                                   Prepared by the Torque Career Campus                                       ");
-
-
-
 
             document.Add(table);
+
 
 
 

@@ -477,6 +477,7 @@
     <Content Include="Images\Dynamicc.png" />
     <Content Include="Images\Sub.jpg" />
     <Content Include="Images\Sub.png" />
+    <Content Include="Images\TalkIT.png" />
     <Content Include="Images\vlcsnap-error290.png" />
     <Content Include="Javascript\Grid.js" />
     <Content Include="Javascript\hodeloader.js" />
@@ -610,6 +611,7 @@
     <Content Include="Views\Session\SessionExpired.cshtml" />
     <Content Include="Views\Logbook\SignLogBook.cshtml" />
     <Content Include="Views\Mentor\Download.cshtml" />
+    <Content Include="Views\Mentor\DownloadMEF.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -619,9 +621,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Monthly Evaluation Forms\" />
     <Folder Include="ProofOfAbsence\" />
     <Folder Include="Views\Email\" />
-    <Folder Include="WeeklyLogbooks\Test Folder\" />
+    <Folder Include="WeeklyLogbooks\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

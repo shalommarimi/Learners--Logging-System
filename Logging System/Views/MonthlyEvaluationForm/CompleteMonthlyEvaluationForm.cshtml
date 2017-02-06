@@ -1,282 +1,321 @@
-﻿
+﻿@model Logging_System.Models.Evaluation
+
+@{
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+@{
+
+    var Traits = new SelectList(new string[] { "Above standard", "Meets standard", "Below standard", "N/A" });
+    var Company = new SelectList(new string[] { "Dynamic DNA", "Dynamic Visual Technologies", "Blue Pencil", "CloudSmiths", "Indigo Cube" });
+    var Mentors = new SelectList(new string[] { "Prudence Mabitsela & Mthunzi Huna", "Prudence Mabitsela", "Mojalifa Tsao", "Mthunzi Huna" });
+    var Preview = new SelectList(new string[] { "Yes", "No" });
+    //var Months = new SelectList(new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September","October", "November", "December" });
+
+    DateTime Current = DateTime.Now;
+    string monthly;
+    monthly = Current.Month.ToString();// return 2 for February
+                                       //string theone;
+
+    //string[] Months = new string[12];
+    //Months[0] = "January";
+    //Months[1] = "February";
+    //Months[2] = "March";
+    //Months[3] = "April";
+    //Months[4] = "May";
+    //Months[5] = "June";
+    //Months[6] = "July";
+    //Months[7] = "August";
+    //Months[8] = "September";
+    //Months[9] = "October";
+    //Months[10] = "November";
+    //Months[11] = "December";
+    //theone = Months.ToString()[Convert.ToUInt32(monthly)];
+}
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Complete Monthly Evaluation Form</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weekly Logbook</title>
     <link href="~/Css/Learner.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Javascript/Upload.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
 
 </head>
 <body>
-    <div class="form-group">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#DateLearnerSigned").datepicker();
+        });
+    </script>
+
+    @using (Html.BeginForm())
+    {
 
 
+        <div class="container">
+            <br /><br />
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="text-align:left;">Monthly Evaluation Form-Learner.</h3>
+                </div>
+                <div class="panel-body" style="text-align:left;">
 
 
-        
-            <div class="container">
-                <div class="form-group">
-                    <div class="form-group">
-                        <div class="form-group">
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <div class="form-group">
-                                                    <br />
+                    <div class="logged">
+                        @if (Session["Names"] != null || Session["Surname"] != null)
+                        {
+                            <text>
+                                Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
+                            </text>
 
-                                                    <div class="logged">
-                                                        @if (Session["Names"] != null || Session["Surname"] != null)
-            {
-                                                            <text>
-                                                                Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
-                                                            </text>
-                                                        }
-                                                        <br /><br />
-                                                    </div>
-
-                                                    <h2>Monthly Evaluation Form</h2>
-                                                    <br />
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-2"> Mentor's Name:</label>
-                                                        <select class="form-control" id="sel1" style="width:190px">
-
-                                                            <option>Prudence Mabitsela</option>
-                                                            <option>Prudence Mabitsela & Mthunzi Huna</option>
-                                                            <option>Mthunzi Huna</option>
-                                                            <option>Paul Cloete</option>
-                                                            <option>Warren Groenewald</option>
-
-                                                        </select>
-                                                    </div>
-
-
-
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-2" name="company">Company Name:</label>
-                                                        <input type="tel" class="form-control" name="txtcompany" id="txtcompany" value="Dynamic Visual Technologies" style="width:190px">
-                                                    </div>
-
-
-
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-2" name="txtName">Learner Name:</label>
-                                                        <input type="tel" class="form-control"  name="txtLearner" id="txtLearner" style="width:190px" value="@Session["Names"].ToString()  @Session["Surname"].ToString()"/>  
-                                                    </div>
-
-
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-2"> Month Of Evalaution:</label>
-                                                        <select class="form-control" id="months" style="width:190px">
-
-                                                            <option>January</option>
-                                                            <option>February</option>
-                                                            <option>March</option>
-                                                            <option>April</option>
-                                                            <option>May</option>
-                                                            <option>June</option>
-                                                            <option>July</option>
-                                                            <option>August</option>
-                                                            <option>September</option>
-                                                            <option>October</option>
-                                                            <option>November</option>
-                                                            <option>December</option>
-
-                                                        </select>
-                                                    </div>
-
-                                                    <!--Starting of that thing-->
-
-                                                    <div class="form-inline">
-
-                                                        <label class="control-label col-sm-2">Extended Application Traits:</label>
-                                                        <input class="form-control" id="monday" name="monday" type="text" value="Mentor demonstrates willingness to assist learners in capturing workplace experience onto the logbook." style="width:450px" />
-
-                                                        <div class="form-group">
-                                                            <!--checkbox  Buttons -->
-                                                            <label class="checkbox-inline">
-                                                                <input type="checkbox" name="optcheckbox">Above Standard
-                                                            </label>
-                                                            <label class="checkbox-inline">
-                                                                <input type="checkbox" name="optcheckbox">Meets Standard
-                                                            </label>
-                                                            <label class="checkbox-inline">
-                                                                <input type="checkbox" name="optcheckbox">Below Standard
-                                                            </label>
-                                                            <label class="checkbox-inline">
-                                                                <input type="checkbox" name="optcheckbox">N/A
-                                                            </label>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="form-inline">
-                                                    <label class="control-label col-sm-2">Extended Application Traits:</label>
-                                                    <input class="form-control" id="monday" name="monday" type="text" value="Mentor demonstrates willingness to assist learners with the learning process of obtaining experience." style="width:450px" />
-
-                                                    <div class="form-group">
-                                                        <!--checkbox  Buttons -->
-                                                        <label class="checkbox-inline">
-                                                            <input type="checkbox" name="optcheckbox">Above Standard
-                                                        </label>
-                                                        <label class="checkbox-inline">
-                                                            <input type="checkbox" name="optcheckbox">Meets Standard
-                                                        </label>
-                                                        <label class="checkbox-inline">
-                                                            <input type="checkbox" name="optcheckbox">Below Standard
-                                                        </label>
-                                                        <label class="checkbox-inline">
-                                                            <input type="checkbox" name="optcheckbox">N/A
-                                                        </label>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="form-inline">
-                                                <label class="control-label col-sm-2">Extended Application Traits:</label>
-                                                <input class="form-control" id="monday" name="monday" type="text" value="Mentor demonstrates effective communication skills with the learner/s." style="width:450px" />
-
-                                                <div class="form-group">
-                                                    <!--checkbox  Buttons -->
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" name="optcheckbox">Above Standard
-                                                    </label>
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" name="optcheckbox">Meets Standard
-                                                    </label>
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" name="optcheckbox">Below Standard
-                                                    </label>
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" name="optcheckbox">N/A
-                                                    </label>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-inline">
-                                        <label class="control-label col-sm-2">Extended Application Traits:</label>
-                                        <input class="form-control" id="monday" name="monday" type="text" value="Mentor is able to accommodate learners." style="width:450px" />
-
-                                        <div class="form-group">
-                                            <!--checkbox  Buttons -->
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" name="optcheckbox">Above Standard
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" name="optcheckbox">Meets Standard
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" name="optcheckbox">Below Standard
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" name="optcheckbox">N/A
-                                            </label>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-inline">
-                                <label class="control-label col-sm-2">Extended Application Traits:</label>
-                                <input class="form-control" id="monday" name="monday" type="text" value="Learner is capable of applying problem solving techniques." style="width:450px" />
-
-                                <div class="form-group">
-                                    <!--checkbox  Buttons -->
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="optcheckbox">Above Standard
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="optcheckbox">Meets Standard
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="optcheckbox">Below Standard
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="optcheckbox">N/A
-                                    </label>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <label class="control-label col-sm-2">Extended Application Traits:</label>
-                        <input class="form-control" id="monday" name="monday" type="text" value="FINAL JUDGEMENT" style="width:450px" />
-
-                        <div class="form-group">
-                            <!--checkbox  Buttons -->
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="optcheckbox">Above Standard
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="optcheckbox">Meets Standard
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="optcheckbox">Below Standard
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="optcheckbox">N/A
-                            </label>
-
-                        </div>
-
+                        }
                     </div>
 
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Learner Signature:</label>
-                    <input class="form-control" id="monday" name="monday" type="text" placeholder="Learner" style="width:190px" />
+            </div>
+        </div>
+        <div class="form-horizontal">
 
+
+
+            @Html.AntiForgeryToken()
+            <div class="col-sm-3">
+                @Html.ValidationSummary(true)
+            </div>
+
+            <br /><br /><br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MentorName, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.MentorName, Mentors, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MentorName)
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Signature Date:</label>
-                    <input type="date" class="form-control" name="txtDate" id="txtDate" style="width:190px">
+            </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.CompanyName, Company, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CompanyName)
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Mentor Signature:</label>
-                    <input class="form-control" id="monday" name="monday" type="text" placeholder="Learner" style="width:190px" />
-
+            <div class="form-group">
+                @Html.LabelFor(model => model.LearnerName, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.TextBoxFor(model => model.LearnerName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LearnerName)
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Signature Date:</label>
-                    <input type="date" class="form-control" name="txtDate" id="txtDate" style="width:190px">
+            </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.Months, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.TextBoxFor(model => model.Months, new { @class = "form-control", @Value = monthly })
+                    @Html.ValidationMessageFor(model => model.Months)
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <input type="submit" name="btnSub" class="btn btn-primary" value="Submit" />
-                         <input type="button" name="btnHome" class="btn btn-primary" value="Back" onclick="location.href='@Url.Action("Learner_Home", "LearnersHome")'" />
-                        <input type="button" name="btnHome" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
-                    </div>
+            </div>
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>Extended Application Traits 1:</h4>
+            </div>
+            <br /><br /><br />
+            @*Starts Here*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trait01, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(model => model.Trait01, new { @class = "form-control", @Value = "Mentor demonstrates willingness to assist learners in capturing workplace experience onto the logbook." })
+                    @Html.ValidationMessageFor(model => model.Trait01)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating1, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Rating1, Traits, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rating1)
                 </div>
             </div>
 
 
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>Extended Application Traits 2:</h4>
+            </div>
+            <br /><br /><br />
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trait02, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(model => model.Trait02, new { @class = "form-control", @Value = "Mentor demonstrates willingness to assist learners with the learning process of obtaining experience." })
+                    @Html.ValidationMessageFor(model => model.Trait02)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating2, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Rating2, Traits, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rating2)
+                </div>
+            </div>
+
+
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>Extended Application Traits 3:</h4>
+            </div>
+            <br /><br /><br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trait03, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(model => model.Trait03, new { @class = "form-control", @Value = "Mentor demonstrates effective communication skills with the learner/s." })
+                    @Html.ValidationMessageFor(model => model.Trait03)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating3, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Rating3, Traits, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rating3)
+                </div>
+            </div>
+
+
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>Extended Application Traits 4:</h4>
+            </div>
+            <br /><br /><br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trait04, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(model => model.Trait04, new { @class = "form-control", @Value = "Mentor is able to accommodate learners." })
+                    @Html.ValidationMessageFor(model => model.Trait04)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating4, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Rating4, Traits, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rating4)
+                </div>
+            </div>
+
+
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>Extended Application Traits 5:</h4>
+            </div>
+            <br /><br /><br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trait05, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(model => model.Trait05, new { @class = "form-control", @Value = "Learner is capable of applying problem solving techniques." })
+                    @Html.ValidationMessageFor(model => model.Trait05)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating5, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Rating5, Traits, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rating5)
+                </div>
+            </div>
+
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>FINAL JUDGEMENT:</h4>
+            </div>
+            <br /><br /><br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.final, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.final, Traits, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.final)
+                </div>
+            </div>
+
+            <br /><br /><br />
+
+            <div class="headings">
+                <h4>Comments:</h4>
+            </div>
+            <br /><br /><br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", placeholder = "Comments OPtional" })
+                    @Html.ValidationMessageFor(model => model.Comments)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LearnerSignature, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.TextBoxFor(model => model.LearnerSignature, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LearnerSignature)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateLearnerSigned, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.TextBoxFor(model => model.DateLearnerSigned, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DateLearnerSigned)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Preview, htmlAttributes: new { @class = "control-label col-xs-2" })
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(model => model.Preview, Preview, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Preview)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                    <input type="button" name="btnHome" class="btn btn-primary" value="Back" onclick="location.href='@Url.Action("Learner_Home", "LearnersHome")'" />
+                    <input type="button" name="btnHome" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+                </div>
+            </div>
         </div>
-    
+
+    }
+    @{
+        if (ViewData["result"] != "" && ViewData["result"] != null)
+        {
+            ViewData["result"] = null;
+            <script type="text/javascript" language="javascript">
+                alert("Successfully Submitted Your Monthly Evaluation Form");
+            </script>
+        }
+    }
+
 </body>
 </html>
-

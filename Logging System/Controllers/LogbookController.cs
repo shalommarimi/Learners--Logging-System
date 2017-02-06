@@ -24,7 +24,7 @@ namespace Logging_System.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Could Not Create Logbook");
+                ModelState.AddModelError(string.Empty, "Please ensure that all required fieds are filled");
                 return View();
             }
         }

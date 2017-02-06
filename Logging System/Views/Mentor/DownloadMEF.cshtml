@@ -27,20 +27,20 @@
         @model List<string>
         <br />
         <br /><br />
-        <h4>Learners Logbooks</h4>
+        <h4>Learners Monthly Evaluation Forms</h4>
         <br />
 
         <div class="container-downloads">
             <table border="1" ; style="border-color:#f39c12; border-style:double;">
                 <tr>
                     <th style="color:#2b398b;">Learner's Name</th>
-                    <th style="color:#2b398b;">Download Logbook</th>
+                    <th style="color:#2b398b;">Download MEF</th>
                 </tr>
                 @for (var i = 0; i <= Model.Count - 1; i++)
             {
                     <tr>
                         <td>@Model[i].ToString() </td>
-                        <td>@Html.ActionLink("Download", "Downloads", new { ImageName = @Model[i].ToString() }) </td>
+                        <td>@Html.ActionLink("Download", "Downloadings", new { Monthly = @Model[i].ToString() }) </td>
                     </tr>
                 }
 
@@ -51,7 +51,7 @@
 
                 <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Logout", "Mentor")'" />
                 <input type="button" name="submit" class="btn btn-primary" value="Back" onclick="location.href='@Url.Action("Sign", "Sign")'" />
-                <input type="button" name="submit" class="btn btn-primary" value="Monthly Evaluation Forms" onclick="location.href='@Url.Action("DownloadMEF", "Mentor")'" />
+                @*<input type="button" name="submit" class="btn btn-primary" value="Monthly Evaluation Forms" onclick="location.href='@Url.Action("DownloadMEF", "Mentor")'" />*@
             </div>
 
         </div>

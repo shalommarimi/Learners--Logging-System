@@ -90,7 +90,7 @@ body {
     margin: 0;
 }
 .form-signin .form-signin-heading, .form-signin{
-    /*margin-bottom: 10px;*/
+  
 }
 .form-signin {
     max-width: 400px;
@@ -100,10 +100,6 @@ body {
 .user-session h2 {
     color: #fdbb30;
 }         
-/*border: 5px solid #2b398b;
-    
-border-top-color:#fdbb30;*/
-
 
 
 
