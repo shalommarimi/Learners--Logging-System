@@ -84,6 +84,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\WebGrease.dll</HintPath>
+    </Reference>
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
@@ -556,9 +560,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MasterPage.cshtml" />
     <Content Include="Views\Learner\Login.cshtml" />
-    <Content Include="WeeklyLogbooks\6-February-2017\eeeeefefe Weekly Logbook.pdf" />
-    <Content Include="WeeklyLogbooks\6-February-2017\efeefeefefe Weekly Logbook.pdf" />
-    <Content Include="WeeklyLogbooks\11112121 Weekly Logbook.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -578,6 +579,7 @@
     <Compile Include="Controllers\ResetController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SignController.cs" />
+    <Compile Include="Controllers\WeeklyController.cs" />
     <Compile Include="EFramework\Dal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -622,6 +624,7 @@
     <Content Include="Views\Mentor\Download.cshtml" />
     <Content Include="Views\Mentor\DownloadMEF.cshtml" />
     <Content Include="Views\Monthly\MonthlyDownloads.cshtml" />
+    <Content Include="Views\Weekly\WeeklyDownloads.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -635,6 +638,8 @@
     <Folder Include="ProofOfAbsence\" />
     <Folder Include="Views\Email\" />
     <Folder Include="Views\Explorer\" />
+    <Folder Include="Views\Weeky\" />
+    <Folder Include="WeeklyLogbooks\" />
     <Folder Include="ZippedMonthlyEvaluationForms\" />
     <Folder Include="ZippedWeeklyLogbooks\" />
   </ItemGroup>

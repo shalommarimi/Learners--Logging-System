@@ -3,6 +3,7 @@
 @{
     Layout = "~/Views/Shared/MasterPage.cshtml";
 }
+
 @{
 
     var Hours = new SelectList(new string[] { "8 Hours", "Absent", "1 Hour", "2 Hours", "3 Hours", " 4 Hours", "5 Hours", "6 Hours", "7 Hours" });
@@ -15,6 +16,7 @@
     string name = @Session["Names"].ToString() + " " + @Session["Surname"].ToString();
 
 }
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,7 +134,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Day01, htmlAttributes: new { @class = "control-label col-sm-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.Day01, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Day01, new { @class = "form-control", @Value = dt })
                     @Html.ValidationMessageFor(model => model.Day01)
                 </div>
             </div>

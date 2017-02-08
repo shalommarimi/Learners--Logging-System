@@ -11,6 +11,19 @@ namespace Logging_System
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                  name: "Weekly",
+                  url: "Weekly/{*path}",
+                  defaults: new
+                  {
+                      controller = "Weekly",
+                      action = "WeeklyDownloads",
+                      path = UrlParameter.Optional
+                  }
+                                  );
+
             routes.MapRoute(
                   name: "Monthly",
                   url: "Monthly/{*path}",

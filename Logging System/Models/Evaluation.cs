@@ -137,7 +137,7 @@ namespace Logging_System.Models
         public string CreateEvaluation(Evaluation _evaluation)
         {
 
-            string WL = "Monthly Evaluation Form";
+            string MEF = "Monthly Evaluation Form";
             Document document = new Document();
             document.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
@@ -176,7 +176,7 @@ namespace Logging_System.Models
             }
 
 
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(path + _evaluation.LearnerName + " " + WL + ".pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(path + _evaluation.LearnerName + " " + MEF + ".pdf", FileMode.Create));
 
 
 
@@ -625,7 +625,7 @@ namespace Logging_System.Models
 
             if (_evaluation.Preview == "Yes")
             {
-                System.Diagnostics.Process.Start(path + _evaluation.LearnerName + " " + WL + ".pdf");
+                System.Diagnostics.Process.Start(path + _evaluation.LearnerName + " " + MEF + ".pdf");
             }
 
 

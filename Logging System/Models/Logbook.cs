@@ -47,6 +47,9 @@ namespace Logging_System.Models
         [DisplayFormat(DataFormatString = "{MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Day01 { get; set; }
 
+
+
+
         [Required]
         [Display(Name = "Task Completed:")]
         public string TaskDay01 { get; set; }
@@ -226,6 +229,30 @@ namespace Logging_System.Models
         public string CreateLogbook(Logbook _logbook)
         {
 
+            //DateTime Monday = DateTime.Now;
+            //while (Monday.DayOfWeek != DayOfWeek.Monday) Monday = Monday.AddDays(-1);
+            //string Mondays = Monday.ToString("dd-MMMM-yyyy");
+
+          
+            //DateTime Tuesday = DateTime.Now;
+            //while (Tuesday.DayOfWeek != DayOfWeek.Tuesday) Tuesday = Tuesday.AddDays(-1);
+            //string Tuesdays = Tuesday.ToString("dd-MMMM-yyyy");
+
+
+            //DateTime Wednesday = DateTime.Now;
+            //while (Wednesday.DayOfWeek != DayOfWeek.Wednesday) Wednesday = Wednesday.AddDays(-1);
+            //string Wednesdays = Wednesday.ToString("dd-MMMM-yyyy");
+
+
+            //DateTime Thursday = DateTime.Now;
+            //while (Thursday.DayOfWeek != DayOfWeek.Thursday) Thursday = Thursday.AddDays(-1);
+            //string Thursdays = Thursday.ToString("dd-MMMM-yyyy");
+
+
+            //DateTime Friday = DateTime.Now;
+            //while (Friday.DayOfWeek != DayOfWeek.Friday) Friday = Friday.AddDays(-1);
+            //string Fridays = Friday.ToString("dd-MMMM-yyyy");
+
 
 
 
@@ -237,23 +264,16 @@ namespace Logging_System.Models
             document.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             //Document document = new Document(new RectangleReadOnly(842, 595), 88f, 88f, 10f, 10f);
             // Document document = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
-            DateTime Created = DateTime.Now;
-
-            //Checking and Creating folder with name date
-            string folderfilter;
-            string day;
-            string month;
-            string yaer;
+          
 
 
-            day = Created.Day.ToString();
-            month = Created.ToString("MMMM");
-            yaer = Created.Year.ToString();
+            DateTime dt = DateTime.Now;
+            while (dt.DayOfWeek != DayOfWeek.Friday) dt = dt.AddDays(1);
+            string Week = dt.ToString("dd-MMMM-yyyy");
 
-            folderfilter = day + "-" + month + "-" + yaer;
 
             //My path
-            string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + folderfilter + "\\";
+            string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + Week + "\\";
 
             if (!Directory.Exists(path))
             {
@@ -405,7 +425,10 @@ namespace Logging_System.Models
 
 
             //1st Row
+
+
             table.AddCell(_logbook.Day01.Value.ToShortDateString());
+            //table.AddCell(Mondays);
             table.AddCell(_logbook.TaskDay01);
             table.AddCell(_logbook.CompletedSatDay01);
             table.AddCell(_logbook.TimeTakenDay01);
@@ -416,6 +439,8 @@ namespace Logging_System.Models
 
             //2nd Row
 
+
+            //table.AddCell(Tuesdays);
             table.AddCell(_logbook.Day02.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay02);
             table.AddCell(_logbook.CompletedSatDay02);
@@ -426,7 +451,10 @@ namespace Logging_System.Models
             table.AddCell("M.Huna");
 
             //3rd Row
-            
+
+
+
+            //table.AddCell(Wednesdays);
             table.AddCell(_logbook.Day03.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay03);
             table.AddCell(_logbook.CompletedSatDay03);
@@ -438,6 +466,9 @@ namespace Logging_System.Models
 
             //4th Row
 
+
+
+            //table.AddCell(Thursdays);
             table.AddCell(_logbook.Day04.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay04);
             table.AddCell(_logbook.CompletedSatDay04);
@@ -449,6 +480,8 @@ namespace Logging_System.Models
 
             //5th Row
 
+
+            //table.AddCell(Fridays);
             table.AddCell(_logbook.Day05.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay05);
             table.AddCell(_logbook.CompletedSatDay05);
@@ -469,7 +502,7 @@ namespace Logging_System.Models
 
             if (_logbook.Preview == "Yes")
             {
-                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + folderfilter + "\\" + _logbook.LearnerName + " " + WL + ".pdf");
+                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + Week + "\\" + _logbook.LearnerName + " " + WL + ".pdf");
             }
 
 
