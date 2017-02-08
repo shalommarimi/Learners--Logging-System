@@ -6,7 +6,11 @@
 
 
 
-.Wrapper h4 {
+.Wrapper h4 h3 {
+
+    color:#f39c12;
+}
+.Wrapper h3 {
 
     color:#f39c12;
 }

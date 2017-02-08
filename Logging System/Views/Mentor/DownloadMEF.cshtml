@@ -31,21 +31,29 @@
         <br />
 
         <div class="container-downloads">
-            <table border="1" ; style="border-color:#f39c12; border-style:double;">
-                <tr>
-                    <th style="color:#2b398b;">Learner's Name</th>
-                    <th style="color:#2b398b;">Download MEF</th>
-                </tr>
-                @for (var i = 0; i <= Model.Count - 1; i++)
-            {
+
+            <table border="1" ; style="border-color:#f39c12; border-style:double; margin:5px;">
+                @using (Html.BeginForm("ProcessEvaluation",
+ "Mentor", FormMethod.Post))
+                {
+                    foreach (string file in Model)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox"
+                                       name="selectedfiles" value="@file" />
+                            </td>
+                            <td>@file</td>
+                        </tr>
+                    }
                     <tr>
-                        <td>@Model[i].ToString() </td>
-                        <td>@Html.ActionLink("Download", "Downloadings", new { Monthly = @Model[i].ToString() }) </td>
+                        <td colspan="2">
+                            <input type="submit" class="btn btn-primary" value="Download Selected Weekly Logbooks" />
+                        </td>
                     </tr>
                 }
-
-
             </table>
+
             <div class="buttons">
 
 
@@ -63,4 +71,3 @@
 
 </body>
 </html>
-

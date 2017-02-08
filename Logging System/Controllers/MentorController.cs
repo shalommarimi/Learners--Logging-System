@@ -10,6 +10,8 @@ using WebMatrix.Data;
 using Learn.BL;
 using System.Net.Mail;
 using System.IO;
+using System.IO.Compression;
+
 
 namespace Logging_System.Controllers
 {
@@ -30,42 +32,148 @@ namespace Logging_System.Controllers
 
            return View();
         }
-        public FileResult Downloads(string ImageName)
+
+        [HttpPost]
+        public ActionResult ProcessForm(List<string> selectedfiles)
         {
-            var FileVirtualPath = "~/WeeklyLogbooks/" + ImageName;
-            return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+            if (System.IO.File.Exists(Server.MapPath
+                              ("~/ZippedWeeklyLogbooks/WeeklyLogbooks.zip")))
+            {
+                System.IO.File.Delete(Server.MapPath
+                              ("~/ZippedWeeklyLogbooks/WeeklyLogbooks.zip"));
+            }
+            ZipArchive zip = ZipFile.Open(Server.MapPath
+                     ("~/ZippedWeeklyLogbooks/WeeklyLogbooks.zip"), ZipArchiveMode.Create);
+            foreach (string file in selectedfiles)
+            {
+                zip.CreateEntryFromFile(Server.MapPath
+                     ("~/WeeklyLogbooks/" + file), file);
+            }
+            zip.Dispose();
+            return File(Server.MapPath("~/ZippedWeeklyLogbooks/WeeklyLogbooks.zip"),
+                      "application/zip", "WeeklyLogbooks.zip");
         }
+        [HttpPost]
+        public ActionResult ProcessEvaluation(List<string> selectedfiles)
+        {
+            if (System.IO.File.Exists(Server.MapPath("~/ZippedMonthlyEvaluationForms/MonthlyEvaluationForms.zip")))
+
+            {
+                System.IO.File.Delete(Server.MapPath("~/ZippedMonthlyEvaluationForms/MonthlyEvaluationForms.zip"));
+
+            }
+            ZipArchive zip = ZipFile.Open(Server.MapPath("~/ZippedMonthlyEvaluationForms/MonthlyEvaluationForms.zip"), ZipArchiveMode.Create);
+
+            foreach (string file in selectedfiles)
+            {
+                zip.CreateEntryFromFile(Server.MapPath("~/Monthly Evaluation Forms/" + file), file);
+
+            }
+            zip.Dispose();
+            return File(Server.MapPath("~/ZippedMonthlyEvaluationForms/MonthlyEvaluationForms.zip"),
+                      "application/zip", "MonthlyEvaluationForms.zip");
+        }
+        //public FileResult Downloads(string ImageName)
+        //{
+        //    var FileVirtualPath = "~/WeeklyLogbooks/" + ImageName;
+        //    return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+        //}
         [Authorize]
         public ActionResult Download()
         {
 
-            var dir = new System.IO.DirectoryInfo(Server.MapPath("~/WeeklyLogbooks/"));
-            System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
-            foreach (var file in fileNames)
+            //var dir = new System.IO.DirectoryInfo(Server.MapPath("~/WeeklyLogbooks/"));
+            //System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
+            //foreach (var file in fileNames)
+            //{
+            //    items.Add(file.Name);
+            //}
+            //return View(items);
+
+
+            string[] files = Directory.GetFiles(
+                 Server.MapPath("~/WeeklyLogbooks"));
+            List<string> downloads = new List<string>();
+            foreach (string file in files)
             {
-                items.Add(file.Name);
+                downloads.Add(Path.GetFileName(file));
             }
-            return View(items);
+            return View(downloads);
         }
 
 
-        //For Logbooks
-        public FileResult Downloadings(string Monthly)
-        {
-            var FileVirtualPath = "~/Monthly Evaluation Forms/" + Monthly;
-            return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
-        }
+       
+        //public FileResult Downloadings(string Monthly)
+        //{
+        //    var FileVirtualPath = "~/Monthly Evaluation Forms/" + Monthly;
+        //    return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+        //}
+
+
+
         [Authorize]
         public ActionResult DownloadMEF()
         {
 
-            var dir = new System.IO.DirectoryInfo(Server.MapPath("~/Monthly Evaluation Forms/"));
-            System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
-            foreach (var file in fileNames)
+
+            //var dir = new System.IO.DirectoryInfo(Server.MapPath("~//Monthly Evaluation Forms/"));
+            ////System.IO.FileInfo[] fileNames = dir.GetFiles("*.*"); List<string> items = new List<string>();
+            //System.IO.FileInfo[] fileNames = dir.GetFiles("*"); List<string> items = new List<string>();
+            //foreach (var file in fileNames)
+            //{
+            //    items.Add(file.Name);
+            //}
+            //return View(items);
+
+
+
+
+            //string evaluationpath = "~/Monthly Evaluation Forms";
+
+            //string[] files = Directory.GetFiles(Server.MapPath(evaluationpath));
+
+            //List<string> downloads = new List<string>();
+            //foreach (string file in files)
+            //{
+            //    downloads.Add(Path.GetFileName(file));
+            //}
+            //return View(downloads);
+
+           
+
+            string path = Server.MapPath(@"~/Monthly Evaluation Forms");
+            List<string> picFolders = new List<string>();
+
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+
+            if (dirInfo.GetFiles("*.*").Length > 0)
+                picFolders.Add(dirInfo.Name);
+
+            foreach (var dir in dirInfo.GetDirectories())
             {
-                items.Add(file.Name);
+                if (dir.GetFiles("*", SearchOption.AllDirectories).Length > 0)
+                    picFolders.Add(dir.Name);
             }
-            return View(items);
+
+            return View(picFolders);
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
 

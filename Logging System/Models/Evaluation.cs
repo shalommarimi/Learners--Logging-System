@@ -4,6 +4,7 @@ using iTextSharp.text.pdf.draw;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -150,10 +151,32 @@ namespace Logging_System.Models
             //PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(subPath + _evaluation.LearnerName + " " + WL + ".pdf", FileMode.Create));
 
             //Ending Point
+            DateTime Created = DateTime.Now;
+
+            //Checking and Creating folder with name date
+            string folderfilter;
+            string day;
+            string month;
+            string yaer;
 
 
+            day = Created.Day.ToString();
+            month = Created.ToString("MMMM");
+            yaer = Created.Year.ToString();
 
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + _evaluation.LearnerName + " " + WL + ".pdf", FileMode.Create));
+            folderfilter =  month + " " + yaer;
+
+            //My path
+            //string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + folderfilter + "\\";
+            string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + folderfilter + "\\";
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(path + _evaluation.LearnerName + " " + WL + ".pdf", FileMode.Create));
 
 
 
@@ -248,8 +271,8 @@ namespace Logging_System.Models
             
             string line = "           ";
          infos.SetLeading(0.0f, 2.0f);
-            string email1 = "Thembekile.Madlala@torque-it.com";
-            string email2 = "Violet.llale.Madlala@torque-it.com";
+            //string email1 = "Thembekile.Madlala@torque-it.com";
+            //string email2 = "Violet.llale.Madlala@torque-it.com";
             info.Add(line + line + line + line + line + line + line + line + "MONTHLY EVALUATIONS  " + "\r\n");
 
            
@@ -564,8 +587,10 @@ namespace Logging_System.Models
             string date;
             DateTime Current = DateTime.Now;
             date = Current.DayOfYear.ToString();
-            //string monthly;
-            //monthly = Current.Month.ToString();
+           
+            
+
+
 
             Chunk glue = new Chunk(new VerticalPositionMark());
             Paragraph p = new Paragraph();
@@ -600,7 +625,7 @@ namespace Logging_System.Models
 
             if (_evaluation.Preview == "Yes")
             {
-                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + _evaluation.LearnerName + " " + WL + ".pdf");
+                System.Diagnostics.Process.Start(path + _evaluation.LearnerName + " " + WL + ".pdf");
             }
 
 

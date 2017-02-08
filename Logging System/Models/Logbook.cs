@@ -238,7 +238,31 @@ namespace Logging_System.Models
             //Document document = new Document(new RectangleReadOnly(842, 595), 88f, 88f, 10f, 10f);
             // Document document = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
             DateTime Created = DateTime.Now;
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + _logbook.LearnerName + " " + WL + ".pdf", FileMode.Create));
+
+            //Checking and Creating folder with name date
+            string folderfilter;
+            string day;
+            string month;
+            string yaer;
+
+
+            day = Created.Day.ToString();
+            month = Created.ToString("MMMM");
+            yaer = Created.Year.ToString();
+
+            folderfilter = day + "-" + month + "-" + yaer;
+
+            //My path
+            string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + folderfilter + "\\";
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+
+
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(path + _logbook.LearnerName + " " + WL + ".pdf", FileMode.Create));
 
 
 
@@ -354,8 +378,7 @@ namespace Logging_System.Models
             Font arialsignature5 = FontFactory.GetFont("Matura MT Script Capitals", 13, BaseColor.BLACK);
             arial.SetStyle(Font.BOLD);
 
-
-
+                        
             PdfPCell Cell = new PdfPCell(new Phrase("Date", new Font(arial)));
             PdfPCell Cell1 = new PdfPCell(new Phrase("Task/s Completed", new Font(arial)));
             PdfPCell Cell2 = new PdfPCell(new Phrase("Completed to satidfaction Yes/No", new Font(arial)));
@@ -403,6 +426,7 @@ namespace Logging_System.Models
             table.AddCell("M.Huna");
 
             //3rd Row
+            
             table.AddCell(_logbook.Day03.Value.ToShortDateString());
             table.AddCell(_logbook.TaskDay03);
             table.AddCell(_logbook.CompletedSatDay03);
@@ -445,7 +469,7 @@ namespace Logging_System.Models
 
             if (_logbook.Preview == "Yes")
             {
-                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + _logbook.LearnerName + " " + WL + ".pdf");
+                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + folderfilter + "\\" + _logbook.LearnerName + " " + WL + ".pdf");
             }
 
 

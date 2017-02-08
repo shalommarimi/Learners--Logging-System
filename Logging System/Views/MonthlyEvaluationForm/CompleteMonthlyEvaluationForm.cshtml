@@ -10,27 +10,15 @@
     var Company = new SelectList(new string[] { "Dynamic DNA", "Dynamic Visual Technologies", "Blue Pencil", "CloudSmiths", "Indigo Cube" });
     var Mentors = new SelectList(new string[] { "Prudence Mabitsela & Mthunzi Huna", "Prudence Mabitsela", "Mojalifa Tsao", "Mthunzi Huna" });
     var Preview = new SelectList(new string[] { "Yes", "No" });
-    //var Months = new SelectList(new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September","October", "November", "December" });
 
-    DateTime Current = DateTime.Now;
+    //Month of Evaluation-Automatic
+    DateTime Now = DateTime.Now;
     string monthly;
-    monthly = Current.Month.ToString();// return 2 for February
-                                       //string theone;
+    string year;
+    monthly = Now.ToString("MMMM");
+    year = Now.Year.ToString();
+    string moe = monthly + " " + year;
 
-    //string[] Months = new string[12];
-    //Months[0] = "January";
-    //Months[1] = "February";
-    //Months[2] = "March";
-    //Months[3] = "April";
-    //Months[4] = "May";
-    //Months[5] = "June";
-    //Months[6] = "July";
-    //Months[7] = "August";
-    //Months[8] = "September";
-    //Months[9] = "October";
-    //Months[10] = "November";
-    //Months[11] = "December";
-    //theone = Months.ToString()[Convert.ToUInt32(monthly)];
 }
 
 <!DOCTYPE html>
@@ -121,7 +109,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Months, htmlAttributes: new { @class = "control-label col-xs-2" })
                 <div class="col-xs-2">
-                    @Html.TextBoxFor(model => model.Months, new { @class = "form-control", @Value = monthly })
+                    @Html.TextBoxFor(model => model.Months, new { @class = "form-control", @Value = moe })
                     @Html.ValidationMessageFor(model => model.Months)
                 </div>
             </div>

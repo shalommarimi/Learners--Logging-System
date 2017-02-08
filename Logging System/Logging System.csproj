@@ -64,6 +64,8 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -109,6 +111,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\folder.png" />
     <Content Include="Content\jquery-ui-1.12.1\external\jquery\jquery.js" />
     <Content Include="Content\jquery-ui-1.12.1\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\jquery-ui-1.12.1\images\ui-icons_555555_256x240.png" />
@@ -450,6 +453,7 @@
     <Content Include="Content\themes\MyThemes\start\jquery-ui.css" />
     <Content Include="Content\themes\MyThemes\start\jquery-ui.min.css" />
     <Content Include="Content\themes\MyThemes\start\theme.css" />
+    <Content Include="Content\up.png" />
     <Content Include="Css\Admin.css" />
     <Content Include="Css\font-awesome.css" />
     <Content Include="Css\font-awesome.min.css" />
@@ -552,12 +556,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MasterPage.cshtml" />
     <Content Include="Views\Learner\Login.cshtml" />
+    <Content Include="WeeklyLogbooks\6-February-2017\eeeeefefe Weekly Logbook.pdf" />
+    <Content Include="WeeklyLogbooks\6-February-2017\efeefeefefe Weekly Logbook.pdf" />
+    <Content Include="WeeklyLogbooks\11112121 Weekly Logbook.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\ChangePasswordController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\MonthlyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LearnerController.cs" />
     <Compile Include="Controllers\LearnersHomeController.cs" />
@@ -576,6 +584,7 @@
     </Compile>
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Evaluation.cs" />
+    <Compile Include="Models\ExplorerModel.cs" />
     <Compile Include="Models\Logbook.cs" />
     <Compile Include="Models\NewPassword.cs" />
     <Compile Include="Models\Password.cs" />
@@ -612,6 +621,7 @@
     <Content Include="Views\Logbook\SignLogBook.cshtml" />
     <Content Include="Views\Mentor\Download.cshtml" />
     <Content Include="Views\Mentor\DownloadMEF.cshtml" />
+    <Content Include="Views\Monthly\MonthlyDownloads.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -624,7 +634,9 @@
     <Folder Include="Monthly Evaluation Forms\" />
     <Folder Include="ProofOfAbsence\" />
     <Folder Include="Views\Email\" />
-    <Folder Include="WeeklyLogbooks\" />
+    <Folder Include="Views\Explorer\" />
+    <Folder Include="ZippedMonthlyEvaluationForms\" />
+    <Folder Include="ZippedWeeklyLogbooks\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

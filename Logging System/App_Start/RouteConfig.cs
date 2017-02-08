@@ -11,7 +11,16 @@ namespace Logging_System
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                  name: "Monthly",
+                  url: "Monthly/{*path}",
+                  defaults: new
+                  {
+                      controller = "Monthly",
+                      action = "MonthlyDownloads",
+                      path = UrlParameter.Optional
+                  }
+                                  );
 
             routes.MapRoute(
                 name: "Default",
@@ -20,4 +29,20 @@ namespace Logging_System
             );
         }
     }
+
+    //For safety reasons
+
+    //public class RouteConfig
+    //{
+    //    public static void RegisterRoutes(RouteCollection routes)
+    //    {
+    //        routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+    //        routes.MapRoute(
+    //            name: "Default",
+    //            url: "{controller}/{action}/{id}",
+    //            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+    //        );
+    //    }
+    //}
 }
