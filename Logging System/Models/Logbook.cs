@@ -7,6 +7,8 @@ using iTextSharp.text.pdf;
 using System.IO;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
+
 
 namespace Logging_System.Models
 {
@@ -272,8 +274,11 @@ namespace Logging_System.Models
             string Week = dt.ToString("dd-MMMM-yyyy");
 
 
-            //My path
-            string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + Week + "\\";
+            //M path
+
+            string path = HttpContext.Current.Server.MapPath("~/WeeklyLogbooks/" + Week + "/");
+           
+
 
             if (!Directory.Exists(path))
             {
@@ -502,7 +507,13 @@ namespace Logging_System.Models
 
             if (_logbook.Preview == "Yes")
             {
-                System.Diagnostics.Process.Start("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\WeeklyLogbooks\\" + Week + "\\" + _logbook.LearnerName + " " + WL + ".pdf");
+              
+                string pathss = HttpContext.Current.Server.MapPath("~/WeeklyLogbooks/" + Week + "/");
+
+          
+                System.Diagnostics.Process.Start(pathss  + _logbook.LearnerName + " " + WL + ".pdf");
+
+
             }
 
 

@@ -60,7 +60,7 @@ namespace Logging_System.Content
             catch (Exception)
             {
 
-                ViewBag.Error = "Administrator Username or Password is incorret.";
+                ViewBag.Error = "Username or Password is incorret.";
                 return View("Login");
             }
 

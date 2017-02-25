@@ -20,37 +20,55 @@
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Javascript/Upload.js"></script>
+
+
 </head>
 <body>
-    <div class="Wrapper">
+    <div class="Wrath">
 
-        <br />
-        <div class="content" style="color:#2b398b;">
-            @if (Session["Names"] != null || Session["Surname"] != null)
-            {
-                <text>
-                    Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
-                </text>
-            }
-        </div>
+        @*<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align:center;">Learners proof of absence uploads</h3>
+            </div>
+            <div class="panel-body" style="text-align:left;">*@
 
 
+                <div class="content text-center" style="color:#2b398b;">
 
-        <h2>Successfully Uploaded File</h2>
-        <div class="alert" style="color:#0c7019">
+                    @if (Session["Names"] != null || Session["Surname"] != null)
+                    {
+                        <text>
+                            Learner: @Session["Names"].ToString()  @Session["Surname"].ToString()
+                        </text>
+                    }
 
-            @ViewBag.filename
 
-        </div>
-        <div class="form-horizontal">
+                    <h2>Successfully Uploaded File</h2>
+                    <div class="alert" style="color:#0c7019">
+
+                        <h3>File Uploaded Title : @ViewBag.filename</h3>
+
+                    </div>
+                </div>
+            </div>
+        @*</div>*@
+
+
+
+        <div class="form-horizontal" style="text-align:center;">
 
             <input type="button" name="btnHome" class="btn btn-primary" value="Back" onclick="location.href='@Url.Action("Learner_Home", "LearnersHome")'" />
             <input type="button" name="btnHome" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
-            <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Logout", "Learner")'" />
+            <input type="button" name="submit" class="btn btn-primary" value="Logout" onclick="location.href='@Url.Action("Logout", "Learner")'" /><br /><br />
+
+
+            <h1>Thank You!</h1>
+
+            <img src="~/Images/Dynamic.png" />
         </div>
 
-    </div>
+   
 
-  
-    </body>
+
+</body>
 </html>

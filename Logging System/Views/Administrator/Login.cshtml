@@ -19,44 +19,53 @@
 </head>
 <body>
     <br /><br />
+   
     <div class="container">
+        <div class="formlog">
+
+            @*<header class="text-center">
+
+                   <img src="~/Images/Sub.png" alt="DVT" />
 
 
-        <form class="form-horizontal" method="post" action="/Administrator/DoLogin">
-            <h2 style="font-weight:bold">Administrator Login</h2>
-            <div class="form-group">
 
-                <div class="control-label col-sm-6" style="color:#ff0000; text-align:center;">
-                    @ViewBag.Error
-                </div>
-            </div>
-         
-            <div class="form-group">
-                <div class="input-group input-group-sm col-sm-4">
-                    <span class="input-group-addon" id="sizing-addon3">Username</span>
-                    <input type="text" name="txtUsername" id="txtUsername" class="form-control" aria-describedby="sizing-addon3">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group input-group-sm col-sm-4">
-                    <span class="input-group-addon" id="sizing-addon3">Password</span>
-                    <input type="password" name="txtPassword" id="txtPassword" class="form-control" aria-describedby="sizing-addon3">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group input-group-sm col-sm-4">
-                    <input type="submit" name="btnsubmit" style="margin:3px;" class="btn btn-primary" value="Login" />
-                
-                    <input type="button" style="margin:3px;" name="submit" class="btn btn-primary" value="Cancel" onclick="location.href='@Url.Action("Index", "Home")'" />
+            </header>*@
+
+            <form class="form-horizontal" method="post" action="/Administrator/DoLogin">
+                <h2 style="font-weight:bold">Administrator Login</h2>
+                <div class="form-group">
+
+                    <div class="control-label col-xs-4" style="color:#ff0000; text-align:center;">
+                        @ViewBag.Error
+                    </div>
                 </div>
 
-            </div>
-        </form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="sizing-addon3">Username</span>
+                        <input type="text" name="txtUsername" id="txtUsername" class="form-control" aria-describedby="sizing-addon3" style="width:200px">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="sizing-addon3">Password</span>
+                        <input type="password" name="txtPassword" id="txtPassword" class="form-control" aria-describedby="sizing-addon3" style="width:200px">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="submit" name="btnsubmit" style="margin:3px;" class="btn btn-primary" value="Login" />
+
+                        <input type="button" style="margin:3px;" name="submit" class="btn btn-primary" value="Cancel" onclick="location.href='@Url.Action("Index", "Home")'" />
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
 
 
-
-
-    </div>
+        </div>
 
 </body>
 </html>

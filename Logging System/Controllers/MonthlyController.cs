@@ -32,7 +32,7 @@ namespace Logging_System.Controllers
                 {
                     Response.Redirect("/Monthly/" + path + "/");
                 }
-
+              
                 List<DirModel> dirListModel = new List<DirModel>();
 
                 IEnumerable<string> dirList = Directory.EnumerateDirectories(realPath);

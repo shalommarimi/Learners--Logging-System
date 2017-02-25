@@ -16,6 +16,20 @@
 }
 .buttons {
     margin: 0px;
-    float: left;
+  
     margin-top: 19px;
 }
+table {
+    text-align:center;
+    margin: auto;
+    margin-top:10px;
+    border-color:#0092d7;
+}
+
+ .Wrapper h4{
+     text-align:center;
+    color:#f39c12;
+ }
+ .buttons{
+     text-align:center;
+ }

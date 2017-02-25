@@ -168,21 +168,24 @@ namespace Logging_System.Models
 
             //My path
             //string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + folderfilter + "\\";
-            string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + folderfilter + "\\";
+           // string path = "C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Monthly Evaluation Forms\\" + folderfilter + "\\";
+            string path = HttpContext.Current.Server.MapPath("~/Monthly Evaluation Forms/" + folderfilter + "/");
 
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
 
+         
 
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(path + _evaluation.LearnerName + " " + MEF + ".pdf", FileMode.Create));
 
 
 
             document.Open();
-
-            iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Images\\TalkIT.png");
+            string paths = HttpContext.Current.Server.MapPath("~/Images/TalkIT.png");
+            iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance(paths);
+            //iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance("C:\\Users\\SMarimi\\Desktop\\Learners-Logging-System\\Learners--Logging-System\\Logging System\\Images\\TalkIT.png");
             PNG.Alignment = iTextSharp.text.Image.ALIGN_RIGHT;
 
             PNG.ScalePercent(46f);
@@ -594,13 +597,7 @@ namespace Logging_System.Models
 
             Chunk glue = new Chunk(new VerticalPositionMark());
             Paragraph p = new Paragraph();
-           // iTextSharp.text.Font sig11 = iTextSharp.text.FontFactory.GetFont(BaseFont., 14, iTextSharp.text.Font.ITALIC);
-           // p.Font = sig11;          
-
-
-            //FontFactory.GetFont(FontFactory.HELVETICA, 9, BaseColor.BLUE);
-            //Anchor anchor = new Anchor("Adobe Reader", sig11);
-            //anchor.Reference = "http://www.adobe.com";
+          
 
             p.SetLeading(0.0f, 3.0f);
             p.SetLeading(0.0f, 3.0f);
@@ -625,7 +622,8 @@ namespace Logging_System.Models
 
             if (_evaluation.Preview == "Yes")
             {
-                System.Diagnostics.Process.Start(path + _evaluation.LearnerName + " " + MEF + ".pdf");
+                string pathss = HttpContext.Current.Server.MapPath("~/Monthly Evaluation Forms/" + folderfilter + "/");
+                System.Diagnostics.Process.Start(pathss + _evaluation.LearnerName + " " + MEF + ".pdf");
             }
 
 

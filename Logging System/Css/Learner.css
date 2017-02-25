@@ -4,6 +4,7 @@
     margin: 0 auto;
    
 }
+
 .heading{
 
     color:#fdbb30;
@@ -18,6 +19,14 @@
     margin: 0 auto;
     position:center;
     padding-top : 50px;
+
+   
+}
+.container .formlog{
+    padding: 10px 10px;
+     top:31%;
+    left:38%;
+    position:absolute;
 }
 
     .container .form-control {
@@ -64,3 +73,8 @@ h2 {
 form-group btns {
     margin:3px;
 }
+btn btn-primary{
+    margin:5px;
+}
+
+

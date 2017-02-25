@@ -638,7 +638,6 @@
     <Folder Include="ProofOfAbsence\" />
     <Folder Include="Views\Email\" />
     <Folder Include="Views\Explorer\" />
-    <Folder Include="Views\Weeky\" />
     <Folder Include="WeeklyLogbooks\" />
     <Folder Include="ZippedMonthlyEvaluationForms\" />
     <Folder Include="ZippedWeeklyLogbooks\" />

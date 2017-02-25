@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
@@ -11,7 +12,7 @@ namespace Logging_System.Models
     public class Learners
     {
 
-       
+  //    public int LearnerID { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -69,10 +70,11 @@ namespace Logging_System.Models
         [Required]
         public bool IsUserActive { get; set; }
 
-  
 
+        //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Dal"].ConnectionString);
 
         SqlConnection con = new SqlConnection("Data Source=DVTLSMASHINI;Initial Catalog=DVTLearnership;User ID=sa;Password=Lulama.01");
+     
         SqlCommand cmd = new SqlCommand();
        
        
@@ -134,9 +136,15 @@ namespace Logging_System.Models
             alphas[50] = "Y";
             alphas[51] = "Z";
 
+            //new infor
+            //bool iss = true;
+            //_lean.IsUserActive = iss;
+
             Random r = new Random();
             string randomPassword;
             randomPassword = ((alphas[r.Next(0,52)] + r.Next(0,100) + alphas[r.Next(0,52)] + r.Next(0,100) + alphas[r.Next(0,52)] + r.Next(0,100) + alphas[r.Next(0,52)]));
+
+            
 
             cmd.CommandText = "Insert into [Learners_Information] values('" + _lean.Names 
                 + "','" + _lean.Surname 
@@ -164,6 +172,7 @@ namespace Logging_System.Models
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new System.Net.NetworkCredential
             ("learnerslogsystem@gmail.com", "Jedia.01");
+          
             smtp.EnableSsl = true;
             smtp.Send(mail);
 
